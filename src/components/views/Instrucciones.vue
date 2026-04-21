@@ -10,16 +10,19 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onUnmounted } from 'vue';
 import { useTriviaStore } from '../../stores/trivia';
-import { Howl } from 'howler';
+import { Howl, Howler } from 'howler';
 import gsap from 'gsap';
 
 const store = useTriviaStore();
 const textoBurbuja = ref('');
 const burbujaRef = ref(null);
+let secuenciaActiva = true;
 
 const comenzar = () => {
+  secuenciaActiva = false;
+  Howler.stop(); // Detener todos los audios en reproducción
   store.cambiarVista('pregunta');
 };
 
@@ -27,16 +30,20 @@ const comenzar = () => {
  * Función hablar: 
  * - Actualiza el texto de la burbuja y lo anima con GSAP.
  * - Reproduce el audio usando Howler.js.
- * - Retorna una promesa que se resuelve cuando el audio termina.
+ * - Retorna una promesa que se resuelve cuando el audio termina o se cancela.
  */
 const hablar = (texto, audioRuta) => {
   return new Promise((resolve) => {
+    if (!secuenciaActiva) return resolve();
+
     // Animación de salida (si ya había texto)
     gsap.to(burbujaRef.value, {
       scale: 0,
       opacity: 0,
       duration: 0.3,
       onComplete: () => {
+        if (!secuenciaActiva) return resolve();
+        
         textoBurbuja.value = texto;
         
         // Animación de entrada
@@ -47,14 +54,20 @@ const hablar = (texto, audioRuta) => {
           ease: 'back.out(1.7)'
         });
 
-        if (audioRuta) {
+        if (audioRuta && secuenciaActiva) {
           const sonido = new Howl({
             src: [audioRuta],
             autoplay: true,
             onend: () => {
               // Esperamos un segundo después del audio para mayor naturalidad
-              setTimeout(resolve, 800);
-            }
+              if (secuenciaActiva) {
+                setTimeout(resolve, 800);
+              } else {
+                resolve();
+              }
+            },
+            onloaderror: resolve,
+            onplayerror: resolve
           });
         } else {
           resolve();
@@ -84,16 +97,24 @@ const listaInstrucciones = [
  */
 const ejecutarSecuencia = async () => {
   for (const instruccion of listaInstrucciones) {
+    if (!secuenciaActiva) break;
     await hablar(instruccion.texto, instruccion.audio);
   }
-  // Al terminar, ocultamos la burbuja
-  gsap.to(burbujaRef.value, { scale: 0, opacity: 0, duration: 0.3 });
+  // Al terminar, si la secuencia sigue activa, ocultamos la burbuja
+  if (secuenciaActiva) {
+    gsap.to(burbujaRef.value, { scale: 0, opacity: 0, duration: 0.3 });
+  }
 };
 
 onMounted(() => {
   // Inicializamos la burbuja oculta
   gsap.set(burbujaRef.value, { scale: 0, opacity: 0 });
   ejecutarSecuencia();
+});
+
+onUnmounted(() => {
+  secuenciaActiva = false;
+  Howler.stop();
 });
 </script>
 
