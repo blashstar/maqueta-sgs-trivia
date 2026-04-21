@@ -1,0 +1,12 @@
+node_modules
+dist
+.astro
+.vercel
+.netlify
+.vscode
+.git
+.gitignore
+.dockerignore
+npm-debug.log
+docker-compose.yml
+Dockerfile

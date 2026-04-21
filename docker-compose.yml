@@ -1,0 +1,7 @@
+services:
+  trivia-sgs:
+    build: .
+    container_name: trivia-sgs-app
+    ports:
+      - "8080:80"
+    restart: unless-stopped
