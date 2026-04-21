@@ -1,10 +1,30 @@
 @import './variables.styl'
 
+html
+  font-size 16px
+  
+  @media (max-width: 1080px)
+    font-size 14px
+    
+  @media (max-width: 768px)
+    font-size 12px
+    
+  @media (max-width: 480px)
+    font-size 10px
+    
+  @media (max-height: 900px)
+    font-size 12px
+    
+  @media (max-height: 700px)
+    font-size 10px
+
+
 body
   font-family $fuente-principal
   background-color $sgs-azul-100
   color $sgs-carbon
   line-height $altura-linea-base
+  overflow-wrap break-word
 
 h1, h2, h3, h4, h5, h6
   color $sgs-naranja
