@@ -61,6 +61,11 @@ p
   border none
   text-wrap balance
   user-select none
+  
+  // Para tablets y dispositivos de ancho medio (1080px incluido)
+  @media (max-width: 1080px)
+    font-size 1.5rem
+    padding 0.6em 1.8em
     
   @media (max-width: 480px)
     font-size 1rem
@@ -92,6 +97,9 @@ button
   text-align center
   flex-direction column
   min-height 100%
+  width 100%
+  padding 0.5rem
+  box-sizing border-box
   
   @media (orientation: landscape)
     flex-direction row
@@ -103,13 +111,21 @@ button
   border 1px solid rgba($sgs-azul-100, 0.3)
   border-radius 1rem
   box-shadow 0 8px 32px 0 rgba($sgs-azul-500, 0.3)
-  padding 4rem 3rem
-  max-width 95%
+  padding 1.5rem 1rem
+  max-width 100%
   max-height 95%
   display flex
   flex-direction column
   justify-content center
   align-items center
+  box-sizing border-box
+  
+  @media (min-width: 480px)
+    padding 2rem 1.5rem
+    max-width 95%
+  
+  @media (min-width: 768px)
+    padding 4rem 3rem
   
   @media (orientation: landscape)
     flex-direction row

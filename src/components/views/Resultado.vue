@@ -90,14 +90,24 @@ onUnmounted(() => {
   display flex
   flex-direction column
   align-items center
+  padding 0.5rem
   
   .contenedor-supervisor
-    margin-bottom 1rem
+    margin-bottom 0.5rem
     .supervisor
-      width 35vw
+      width 50vw
+      max-width 200px
       height auto
       filter drop-shadow(0 10px 20px rgba(0,0,0,0.1))
       animation levitar 3s ease-in-out infinite alternate
+      
+      @media (min-width: 480px)
+        width 40vw
+        max-width 250px
+      
+      @media (min-width: 768px)
+        width 35vw
+        max-width 300px
 
   @keyframes levitar
     from
@@ -106,46 +116,98 @@ onUnmounted(() => {
       transform translateY(-15px)
 
   h2
-    font-size 2.5rem
+    font-size 1.8rem
     color $sgs-gris-900
-    margin-bottom 1.5rem
+    margin-bottom 1rem
+    
+    @media (min-width: 480px)
+      font-size 2.2rem
+      margin-bottom 1.2rem
+    
+    @media (min-width: 768px)
+      font-size 2.5rem
+      margin-bottom 1.5rem
 
   .score-card
     background $sgs-blanco
-    padding 2.5rem 2rem
-    border-radius 16px
+    padding 1.5rem 1rem
+    border-radius 12px
     border 1px solid rgba(0,0,0,0.05)
-    box-shadow 0 20px 40px rgba(0,0,0,0.05)
-    margin-bottom 2rem
+    box-shadow 0 10px 30px rgba(0,0,0,0.05)
+    margin-bottom 1.5rem
     display flex
     flex-direction column
-    min-width 300px
+    min-width auto
+    width 90%
+    max-width 280px
+    box-sizing border-box
+    
+    @media (min-width: 480px)
+      padding 2rem 1.5rem
+      border-radius 14px
+      max-width 320px
+    
+    @media (min-width: 768px)
+      padding 2.5rem 2rem
+      border-radius 16px
+      min-width 300px
+      max-width 400px
     
     .label
       color $sgs-carbon
       text-transform uppercase
       letter-spacing 0.1em
-      font-size 1.2rem
+      font-size 1rem
       font-weight $peso-negrita
       margin-bottom 0.5rem
+      
+      @media (min-width: 480px)
+        font-size 1.1rem
+      
+      @media (min-width: 768px)
+        font-size 1.2rem
     
     .value
-      font-size 10rem
+      font-size 5rem
       font-weight $peso-negrita
       color $sgs-naranja
+      line-height 1
+      
+      @media (min-width: 480px)
+        font-size 7rem
+      
+      @media (min-width: 768px)
+        font-size 10rem
 
   .mensaje
     color $sgs-carbon
-    margin-bottom 2.5rem
-    font-size 2rem
-    max-width 80%
+    margin-bottom 1.5rem
+    font-size 1.3rem
+    max-width 95%
     margin-inline auto
     font-weight $peso-medio
-    line-height 1.4
+    line-height 1.3
     text-wrap: balance
+    
+    @media (min-width: 480px)
+      font-size 1.6rem
+      max-width 90%
+    
+    @media (min-width: 768px)
+      font-size 2rem
+      max-width 80%
+      margin-bottom 2.5rem
 
   button
     @extend .boton-primario
     font-size 1.2rem
-    padding 1rem 3rem
+    padding 0.75rem 2rem
+    
+    @media (max-width: 480px)
+      font-size 1rem
+      padding 0.5rem 1.5rem
+    
+    @media (min-width: 768px)
+      font-size 1.4rem
+      padding 1rem 3rem
 </style>

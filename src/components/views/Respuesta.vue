@@ -59,31 +59,69 @@ onUnmounted(() => {
 
 .respuesta
   text-align center
+  padding 0.5rem
   
   .tarjeta
-    padding 3rem
-    border-radius 16px
-    margin-bottom 2rem
+    padding 1.5rem
+    border-radius 12px
+    margin-bottom 1.5rem
     background rgba(255, 255, 255, 0.9)
     border 1px solid rgba(0,0,0,0.05)
-    display grid
-    grid-template-columns 1fr 25%
-    grid-template-rows auto 1fr
-    grid-template-areas "titulo imagen" "texto imagen"
-    justify-content: center
+    display flex
+    flex-direction column
+    align-items center
+    max-width 100%
+    box-sizing border-box
+    
+    @media (min-width: 600px)
+      display grid
+      grid-template-columns 1fr 30%
+      grid-template-rows auto 1fr
+      grid-template-areas "titulo imagen" "texto imagen"
+      justify-content center
+      padding 2rem
+    
+    @media (min-width: 768px)
+      padding 3rem
+      border-radius 16px
     
     &.correcta
-      border-left 8px solid $sgs-verde
+      border-left 6px solid $sgs-verde
+      
+      @media (min-width: 768px)
+        border-left 8px solid $sgs-verde
+      
       h2
         color $sgs-verde
     
     &.incorrecta
-      border-left 8px solid $sgs-rojo
+      border-left 6px solid $sgs-rojo
+      
+      @media (min-width: 768px)
+        border-left 8px solid $sgs-rojo
+      
       h2
         color $sgs-rojo
+  
+  h2
+    font-size 1.8rem
+    margin-bottom 1rem
+    
+    @media (min-width: 480px)
+      font-size 2.2rem
+    
+    @media (min-width: 768px)
+      font-size 2.5rem
 
   .imagen
-    grid-area imagen
+    width 50%
+    max-width 200px
+    margin 1rem 0
+    
+    @media (min-width: 600px)
+      grid-area imagen
+      width 100%
+      margin 0
 
     img
       width 100%
@@ -92,12 +130,44 @@ onUnmounted(() => {
 
   .answer-text
     color $sgs-carbon
-    margin-top 1rem
-    font-size 2rem
+    margin-top 0.5rem
+    font-size 1.2rem
+    line-height 1.4
+    
+    @media (min-width: 480px)
+      font-size 1.5rem
+      margin-top 1rem
+    
+    @media (min-width: 768px)
+      font-size 2rem
+    
     b
       color $sgs-gris-900
       display block
-      font-size 2.5rem
+      font-size 1.4rem
       margin-top 0.5rem
+      word-wrap break-word
+      
+      @media (min-width: 480px)
+        font-size 2rem
+      
+      @media (min-width: 768px)
+        font-size 2.5rem
+
+  button
+    font-size 1.2rem
+    padding 0.75rem 2rem
+    min-width 200px
+    max-width 90%
+    
+    @media (max-width: 480px)
+      font-size 1rem
+      padding 0.5rem 1.5rem
+      min-width 180px
+    
+    @media (min-width: 768px)
+      font-size 1.4rem
+      padding 1rem 3rem
+      min-width 250px
 
 </style>

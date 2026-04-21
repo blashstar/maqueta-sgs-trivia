@@ -124,23 +124,45 @@ onUnmounted(() => {
 .instrucciones
   .tarjeta
     box-sizing border-box
-    text-align left
-    max-width 85vw
-    padding-inline: 15vw;
+    text-align center
+    max-width 100%
+    padding 1rem
+    
+    @media (min-width: 480px)
+      max-width 95vw
+      padding 2rem
+    
+    @media (min-width: 768px)
+      max-width 85vw
+      padding-inline: 10vw
   
   h2
     color $sgs-naranja
-    margin-bottom 1.5rem
+    margin-bottom 1rem
     padding-bottom 0.5rem
-    font-size 2rem
+    font-size 1.8rem
+    
+    @media (min-width: 480px)
+      font-size 2.5rem
 
   .contenido
-    max-width: 60vw
-    margin-inline: auto
+    max-width 100%
+    margin-inline auto
     position relative
+    margin-bottom 1rem
+    
+    @media (min-width: 480px)
+      max-width 80vw
+    
+    @media (min-width: 768px)
+      max-width 60vw
 
   .supervisor
-    width 100%
+    width 80vw
+    max-width 320px
+    height auto
+    display block
+    margin 0 auto
 
   .boca
     position: absolute
@@ -152,29 +174,47 @@ onUnmounted(() => {
   .burbuja
     background-color: $sgs-azul-500
     position: absolute
-    top -6rem
-    left 3rem
-    width 10rem
-    padding 3rem 2rem
+    top -4rem
+    left 0
+    width 8rem
+    padding 1.5rem 1rem
     border-radius 100%
     display: flex
     align-items: center
     justify-content: center
     text-align: center
     color: $sgs-blanco
-    font-size: 1.5rem
+    font-size: 1rem
     transform-origin bottom left
+    
+    @media (min-width: 480px)
+      top -5rem
+      left 1rem
+      width 9rem
+      padding 2rem 1.5rem
+      font-size 1.2rem
+    
+    @media (min-width: 768px)
+      top -6rem
+      left 3rem
+      width 10rem
+      padding 3rem 2rem
+      font-size 1.5rem
 
     &::before
       content ''
       position absolute
-      // top 5rem
-      left -1.5rem
+      left -1rem
       width 0
       height 0
-      border-right: 2rem solid $sgs-azul-500
-      border-top 1.5rem solid transparent
+      border-right: 1.5rem solid $sgs-azul-500
+      border-top 1rem solid transparent
       border-bottom 0.5rem solid transparent
+      
+      @media (min-width: 768px)
+        left -1.5rem
+        border-right: 2rem solid $sgs-azul-500
+        border-top 1.5rem solid transparent
     
     .texto
       text-wrap balance
@@ -182,4 +222,11 @@ onUnmounted(() => {
   button
     @extend .boton-primario
     width 100%
+    max-width 320px
+    font-size 1.3rem
+    padding 0.75rem 2rem
+    
+    @media (max-width: 480px)
+      font-size 1rem
+      padding 0.5rem 1.5rem
 </style>

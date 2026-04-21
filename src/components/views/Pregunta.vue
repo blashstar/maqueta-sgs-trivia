@@ -117,35 +117,61 @@ watch(() => store.indicePreguntaActual, () => {
 
   .tarjeta
     max-height 95vh
-    align-items: stretch
+    align-items stretch
     justify-self: stretch
+    padding 1rem
     
+    @media (min-width: 480px)
+      padding 2rem
+    
+    @media (min-width: 768px)
+      padding 4rem 3rem
   
   .header
     display flex
     justify-content space-between
     color $sgs-carbon
-    font-size 0.9rem
+    font-size 0.75rem
     font-weight $peso-negrita
-    margin-bottom 2rem
+    margin-bottom 1rem
     text-transform uppercase
     letter-spacing 1px
     border-bottom 1px solid rgba(0,0,0,0.05)
-    padding-bottom 1rem
+    padding-bottom 0.5rem
+    
+    @media (min-width: 480px)
+      font-size 0.9rem
+      margin-bottom 1.5rem
+      padding-bottom 1rem
 
   .texto
     color $sgs-naranja
-    font-size 2rem
-    line-height 1.5
-    margin-bottom: 2em
+    font-size 1.2rem
+    line-height 1.4
+    margin-bottom: 1rem
     display: flex
-    gap 1rem
+    gap 0.75rem
+    align-items flex-start
+    
+    @media (min-width: 480px)
+      font-size 1.5rem
+      margin-bottom: 1.5rem
+    
+    @media (min-width: 768px)
+      font-size 2rem
+      line-height 1.5
+      margin-bottom: 2em
 
     img
-      width: 20%
-      flex 0 0 20%
+      width: 15%
+      flex 0 0 15%
+      max-width 80px
       object-fit: contain
       object-position: bottom
+      
+      @media (min-width: 768px)
+        width: 20%
+        flex 0 0 20%
 
     span
       flex 1 1 auto;
@@ -155,24 +181,43 @@ watch(() => store.indicePreguntaActual, () => {
     width 100%
     display flex
     justify-content center
-    margin-bottom 3rem
-    height 4rem
+    margin-bottom 1.5rem
+    height 3rem
     align-items center
+    
+    @media (min-width: 480px)
+      margin-bottom 2rem
+      height 3.5rem
+    
+    @media (min-width: 768px)
+      margin-bottom 3rem
+      height 4rem
 
   .tiempo
     width 100%
     box-sizing border-box
-    height 4rem
+    height 3rem
     background $sgs-naranja
-    border-radius 2rem
+    border-radius 1.5rem
     display flex
     align-items center
     justify-content center
     color $sgs-blanco
-    font-size 1.8rem
+    font-size 1.4rem
     font-weight $peso-negrita
     box-shadow 0 10px 20px rgba(202, 67, 0, 0.2)
-    min-width 4rem
+    min-width 3rem
+    
+    @media (min-width: 480px)
+      height 3.5rem
+      font-size 1.6rem
+      min-width 3.5rem
+    
+    @media (min-width: 768px)
+      height 4rem
+      font-size 1.8rem
+      border-radius 2rem
+      min-width 4rem
     
     &.es-circulo
       animation pulse .3s infinite alternate
@@ -188,19 +233,39 @@ watch(() => store.indicePreguntaActual, () => {
   .options
     display flex
     flex-direction column
-    gap 1rem
+    gap 0.5rem
     width 100%
+    
+    @media (min-width: 480px)
+      gap 0.75rem
+    
+    @media (min-width: 768px)
+      gap 1rem
     
     .option
       background $sgs-azul-100
       border 1px solid $sgs-naranja
       text-align left
-      font-size 2rem
-      line-height: 1.5
-      padding 1rem 1.5em
-      border-radius 1em
+      font-size 1.1rem
+      line-height: 1.4
+      padding 0.875rem 1.25rem
+      border-radius 0.75em
       color $sgs-carbon
       transition all 0.2s ease
+      word-wrap break-word
+      
+      @media (max-width: 480px)
+        font-size 1rem
+        padding 0.75rem 1rem
+      
+      @media (min-width: 768px)
+        font-size 1.6rem
+        line-height: 1.5
+        padding 1rem 1.5em
+        border-radius 1em
+      
+      @media (min-width: 1080px)
+        font-size 1.8rem
       
       &:hover
         background $sgs-naranja
