@@ -1,0 +1,78 @@
+@import './variables.styl'
+
+body
+  font-family $fuente-principal
+  background-color $sgs-azul-100
+  color $sgs-carbon
+  line-height $altura-linea-base
+
+h1, h2, h3, h4, h5, h6
+  color $sgs-naranja
+  margin-bottom 1.5rem
+  line-height 1.1
+  line-height $altura-linea-encabezados
+  margin-bottom 1.5rem
+  font-weight $peso-negrita
+  text-wrap balance
+
+h1
+  font-size 3.5rem
+
+h2
+  font-size 2.5rem
+
+p
+  margin-bottom 1.25rem
+  color $sgs-carbon
+  margin-bottom 2.5rem
+  font-size 1.5rem
+  line-height 1.5
+
+
+.boton
+  display inline-block
+  padding 0.75rem 1.5rem
+  border-radius 3em
+  font-size 1.75rem
+  font-weight $peso-negrita
+  text-decoration none
+  transition all 0.3s ease
+  cursor pointer
+  border none
+  text-wrap balance
+
+.boton-primario
+  @extend .boton
+  background-color $sgs-naranja
+  color $sgs-blanco
+  padding 0.5em 2em
+  box-shadow 0 4px 12px rgba(202, 67, 0, 0.3)
+  &:hover
+    background-color darken($sgs-naranja, 10%)
+
+.boton-secundario
+  @extend .boton
+  background-color $sgs-carbon
+  color $sgs-blanco
+  &:hover
+    background-color $sgs-gris-900
+
+.vista
+  display flex
+  justify-content center
+  align-items center
+  text-align center
+  min-height 100%
+
+.tarjeta
+  background rgba($sgs-blanco, 0.7)
+  border 1px solid rgba($sgs-azul-100, 0.3)
+  border-radius 1rem
+  box-shadow 0 8px 32px 0 rgba($sgs-azul-500, 0.3)
+  padding 4rem 3rem
+  max-width 95%
+  max-height 95%
+  display flex
+  flex-direction column
+  justify-content center
+  align-items center

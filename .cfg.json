@@ -1,0 +1,490 @@
+{
+    "configuracion": {
+        "preguntasTotal": 40,
+        "preguntasPorJuego": 5,
+        "tiempoPorPregunta": 10,
+        "puntosPorAcierto": 20
+    },
+    "preguntas": [
+        {
+            "id": 1,
+            "texto": "¿Cuáles son los principales riesgos al manipular ácidos fuertes?",
+            "opciones": [
+                "Irritación leve sin riesgo si se usan guantes",
+                "Riesgo solo si el envase permanece abierto",
+                "Quemaduras químicas, liberación de vapores tóxicos y reacciones violentas con otras sustancias",
+                "Derrames menores que no requieren control especial"
+            ],
+            "indiceCorrecto": 2,
+            "explicacion": "Los ácidos fuertes representan peligros severos incluyendo quemaduras y reacciones violentas."
+        },
+        {
+            "id": 2,
+            "texto": "¿Qué riesgos implica el manejo de reactivos cianurados?",
+            "opciones": [
+                "Intoxicación aguda por inhalación o ingestión y liberación de gas cianuro de hidrógeno altamente tóxico",
+                "Irritación leve por contacto ocasional",
+                "Riesgo solo por contacto con metales",
+                "Daño menor si se manipula en pequeñas cantidades"
+            ],
+            "indiceCorrecto": 0,
+            "explicacion": "El cianuro es extremadamente tóxico y puede liberar gas cianuro de hidrógeno."
+        },
+        {
+            "id": 3,
+            "texto": "¿Qué peligros están asociados a gases comprimidos?",
+            "opciones": [
+                "Fuga sin riesgo si el cilindro está vertical",
+                "Riesgo solo durante el transporte externo",
+                "Pérdida de presión sin impacto en seguridad",
+                "Explosión por presión, fugas tóxicas y proyección del cilindro"
+            ],
+            "indiceCorrecto": 3,
+            "explicacion": "La alta presión y la naturaleza del contenido suponen riesgos de explosión y fugas."
+        },
+        {
+            "id": 4,
+            "texto": "¿Qué riesgos existen al manipular solventes inflamables?",
+            "opciones": [
+                "Riesgo únicamente si el solvente está caliente",
+                "Incendios, explosiones y exposición a vapores nocivos",
+                "Irritación leve sin riesgo de combustión",
+                "Evaporación segura sin necesidad de ventilación"
+            ],
+            "indiceCorrecto": 1,
+            "explicacion": "Los solventes inflamables pueden causar incendios y liberar vapores peligrosos."
+        },
+        {
+            "id": 5,
+            "texto": "¿Qué tipo de riesgo representa la inhalación de vapores químicos?",
+            "opciones": [
+                "Molestia temporal que desaparece al salir del área",
+                "Riesgo menor si no hay contacto con la piel",
+                "Daños respiratorios, intoxicación y efectos crónicos en la salud",
+                "Exposición aceptable si el olor no es intenso"
+            ],
+            "indiceCorrecto": 2,
+            "explicacion": "La inhalación puede causar daños graves y efectos crónicos a largo plazo."
+        },
+        {
+            "id": 6,
+            "texto": "¿Qué consecuencias puede tener la exposición crónica a metales pesados?",
+            "opciones": [
+                "Irritación superficial que se elimina con lavado simple",
+                "Efectos leves solo durante la jornada laboral",
+                "Riesgo controlado únicamente usando guantes",
+                "Daños neurológicos, renales y acumulación tóxica en el organismo"
+            ],
+            "indiceCorrecto": 3,
+            "explicacion": "La acumulación de metales pesados afecta órganos vitales y el sistema nervioso."
+        },
+        {
+            "id": 7,
+            "texto": "¿Qué riesgos se generan por incompatibilidad química?",
+            "opciones": [
+                "Reacciones violentas, incendios, explosiones o liberación de gases tóxicos",
+                "Pérdida de concentración del producto",
+                "Cambio de color sin afectación a la seguridad",
+                "Reducción automática del peligro químico"
+            ],
+            "indiceCorrecto": 0,
+            "explicacion": "Mezclar sustancias incompatibles puede derivar en reacciones peligrosas e incendios."
+        },
+        {
+            "id": 8,
+            "texto": "¿Qué peligros implica trabajar con oxidantes?",
+            "opciones": [
+                "Reducen el riesgo de combustión en el área",
+                "Solo generan riesgo si están vencidos",
+                "Incrementan el riesgo de incendio al reaccionar con materiales combustibles",
+                "Neutralizan ácidos y solventes inflamables"
+            ],
+            "indiceCorrecto": 2,
+            "explicacion": "Los oxidantes alimentan la combustión de otros materiales."
+        },
+        {
+            "id": 9,
+            "texto": "¿Qué riesgos existen al manipular sustancias corrosivas?",
+            "opciones": [
+                "Irritación leve solo si hay contacto prolongado",
+                "Riesgo bajo si el envase está cerrado",
+                "Daño limitado al uniforme o superficie externa",
+                "Quemaduras con daños severos a la piel, ojos y materiales"
+            ],
+            "indiceCorrecto": 3,
+            "explicacion": "Las sustancias corrosivas destruyen tejidos vivos y materiales al contacto."
+        },
+        {
+            "id": 10,
+            "texto": "¿Cuál es el control crítico para evitar incompatibilidades químicas?",
+            "opciones": [
+                "Ordenar productos por tamaño de envase",
+                "Agrupar reactivos por frecuencia de uso",
+                "Colocar todos los productos en un mismo gabinete",
+                "Almacenamiento y Segregación adecuada según compatibilidad química"
+            ],
+            "indiceCorrecto": 3,
+            "explicacion": "La segregación basada en compatibilidad es fundamental para la seguridad."
+        },
+        {
+            "id": 11,
+            "texto": "¿Cómo actúa la ventilación como control crítico?",
+            "opciones": [
+                "Evita acumulación de vapores tóxicos o inflamables",
+                "Reemplaza completamente el uso de respirador",
+                "Elimina la necesidad de mantener envases cerrados",
+                "Permite trabajar sin revisar la SDS"
+            ],
+            "indiceCorrecto": 0,
+            "explicacion": "La ventilación reduce la concentración de sustancias peligrosas en el aire."
+        },
+        {
+            "id": 12,
+            "texto": "¿Qué control evita liberación de vapores tóxicos?",
+            "opciones": [
+                "Abrir los envases para reducir presión interna",
+                "Colocar envases cerca del extractor apagado",
+                "Envases herméticos y almacenamiento en áreas ventiladas",
+                "Usar recipientes temporales sin tapa"
+            ],
+            "indiceCorrecto": 2,
+            "explicacion": "El sellado hermético y la ventilación son barreras clave contra vapores."
+        },
+        {
+            "id": 13,
+            "texto": "¿Cómo contribuye el etiquetado en materiales peligrosos?",
+            "opciones": [
+                "Sirve solo para registrar el nombre comercial",
+                "Reemplaza la revisión de la SDS",
+                "Es necesario solo cuando el producto sale del laboratorio",
+                "Permite identificar riesgos asociados al material y aplicar medidas de control adecuadas"
+            ],
+            "indiceCorrecto": 3,
+            "explicacion": "Las etiquetas proporcionan información rápida sobre peligros y protección."
+        },
+        {
+            "id": 14,
+            "texto": "¿Qué control evita derrames en almacenamiento?",
+            "opciones": [
+                "Uso de bandejas de contención",
+                "Almacenamiento en mesas de trabajo",
+                "Apilamiento de envases para ahorrar espacio",
+                "Trasvase frecuente a recipientes pequeños"
+            ],
+            "indiceCorrecto": 0,
+            "explicacion": "Las bandejas de contención retienen el líquido en caso de falla del envase."
+        },
+        {
+            "id": 15,
+            "texto": "¿Qué inspecciones son críticas en laboratorio químico?",
+            "opciones": [
+                "Revisar solo orden y limpieza general",
+                "Verificar únicamente si los envases tienen tapa",
+                "Inspección de dispensadores, extractor, lavador de gases, envases, etiquetas y fugas",
+                "Revisar solo los equipos antes de auditorías"
+            ],
+            "indiceCorrecto": 2,
+            "explicacion": "Una inspección integral de equipos y envases garantiza un entorno seguro."
+        },
+        {
+            "id": 16,
+            "texto": "¿Cuáles son los EPP requeridos para manipular matpel en laboratorio químico?",
+            "opciones": [
+                "Casco, botas y chaleco reflectivo solamente",
+                "Mascarilla simple, guantes de tela y lentes comunes",
+                "Solo guantes si el contacto será breve",
+                "Respirador media cara multigas, mandil antiácido, guantes de nitrilo, lentes y careta facial"
+            ],
+            "indiceCorrecto": 3,
+            "explicacion": "Se requiere protección específica para vías respiratorias, piel y ojos."
+        },
+        {
+            "id": 17,
+            "texto": "¿Qué riesgos controla la campana extractora?",
+            "opciones": [
+                "Derrames por almacenamiento inadecuado",
+                "Inhalación de vapores tóxicos y exposición a gases",
+                "Contacto directo con sustancias corrosivas",
+                "Golpes por manipulación de cilindros"
+            ],
+            "indiceCorrecto": 1,
+            "explicacion": "La campana captura contaminantes gaseosos antes de que lleguen al usuario."
+        },
+        {
+            "id": 18,
+            "texto": "¿Cómo se controla la inhalación de gases?",
+            "opciones": [
+                "Trabajando rápido para reducir la exposición",
+                "Usando solo lentes y guantes de nitrilo",
+                "Manteniendo cerradas las salidas de aire",
+                "Ventilación adecuada y uso de respirador media cara con filtros multigas"
+            ],
+            "indiceCorrecto": 3,
+            "explicacion": "La combinación de ventilación y protección respiratoria es el control estándar."
+        },
+        {
+            "id": 19,
+            "texto": "¿Cómo se controla el riesgo de incendios?",
+            "opciones": [
+                "Guardando inflamables lejos de etiquetas visibles",
+                "Agrupando solventes por tamaño del recipiente",
+                "Eliminando fuentes de ignición e inspección según tabla de incompatibilidad",
+                "Ventilando solo después de terminar el trabajo"
+            ],
+            "indiceCorrecto": 2,
+            "explicacion": "Eliminar el calor y segregar correctamente previene la ignición accidental."
+        },
+        {
+            "id": 20,
+            "texto": "¿Cuál es el control crítico frente a derrames?",
+            "opciones": [
+                "Uso de kits de derrames y el plan de respuesta a emergencias",
+                "Limpiar con papel absorbente sin reportar",
+                "Esperar a que el producto se evapore",
+                "Diluir el derrame sin identificar la sustancia"
+            ],
+            "indiceCorrecto": 0,
+            "explicacion": "La respuesta preparada con kits específicos minimiza el impacto."
+        },
+        {
+            "id": 21,
+            "texto": "¿Qué función cumplen duchas y lavaojos?",
+            "opciones": [
+                "Limpieza rutinaria de manos y herramientas",
+                "Sustitución del uso de careta facial",
+                "Descontaminación inmediata del trabajador al tener contacto con materiales peligrosos",
+                "Control del riesgo antes de iniciar la tarea"
+            ],
+            "indiceCorrecto": 2,
+            "explicacion": "Permiten el lavado rápido para reducir daños tras un accidente."
+        },
+        {
+            "id": 22,
+            "texto": "¿Por qué contar con kits de derrames?",
+            "opciones": [
+                "Evitan que sea necesario reportar el incidente",
+                "Reemplazan el plan de respuesta a emergencias",
+                "Sirven solo para derrames de agua",
+                "Permiten contener y neutralizar sustancias peligrosas rápidamente"
+            ],
+            "indiceCorrecto": 3,
+            "explicacion": "Los kits permiten una acción inmediata de contención y neutralización."
+        },
+        {
+            "id": 23,
+            "texto": "¿Qué documento contiene información sobre un reactivo?",
+            "opciones": [
+                "Orden de compra del producto",
+                "Registro interno de asistencia",
+                "La Hoja de Datos de Seguridad (SDS)",
+                "Manual general de mantenimiento"
+            ],
+            "indiceCorrecto": 2,
+            "explicacion": "La SDS es el documento técnico legal para la seguridad química."
+        },
+        {
+            "id": 24,
+            "texto": "¿Cuántos ítems tiene una SDS?",
+            "opciones": [
+                "La hoja SDS tiene 16 ítems",
+                "La hoja SDS tiene 8 ítems",
+                "La hoja SDS tiene 12 ítems",
+                "La hoja SDS tiene 20 ítems"
+            ],
+            "indiceCorrecto": 0,
+            "explicacion": "Bajo el estándar SGA, las SDS deben contener 16 secciones obligatorias."
+        },
+        {
+            "id": 25,
+            "texto": "¿Cuál es el principal peligro del ácido sulfúrico según su SDS?",
+            "opciones": [
+                "Es principalmente inflamable a temperatura ambiente",
+                "Solo presenta riesgo por inhalación prolongada",
+                "Es peligroso únicamente si está mezclado con solventes",
+                "Es altamente corrosivo y puede causar quemaduras severas en piel y ojos"
+            ],
+            "indiceCorrecto": 3,
+            "explicacion": "El ácido sulfúrico es un agente altamente corrosivo para los tejidos."
+        },
+        {
+            "id": 26,
+            "texto": "¿Qué hacer según la SDS en caso de contacto con la piel?",
+            "opciones": [
+                "Retirar el producto con papel seco",
+                "Lavar inmediatamente con abundante agua por al menos 15 minutos",
+                "Aplicar crema y continuar la tarea",
+                "Esperar si no aparece dolor inmediato"
+            ],
+            "indiceCorrecto": 1,
+            "explicacion": "El lavado prolongado con agua es el primer auxilio universal para contacto dérmico."
+        },
+        {
+            "id": 27,
+            "texto": "¿Por qué el HF es considerado extremadamente peligroso según la SDS?",
+            "opciones": [
+                "Porque solo genera irritación superficial visible",
+                "Porque pierde peligrosidad al diluirse parcialmente",
+                "Porque penetra la piel y puede causar daño profundo y toxicidad sistémica",
+                "Porque su principal riesgo es manchar el uniforme"
+            ],
+            "indiceCorrecto": 2,
+            "explicacion": "El ácido fluorhídrico penetra la piel y puede causar daño profundo."
+        },
+        {
+            "id": 28,
+            "texto": "¿Qué hacer en caso de inhalación de ácido clorhídrico según la SDS?",
+            "opciones": [
+                "Mantenerla sentada dentro del mismo ambiente",
+                "Darle agua antes de moverla del área",
+                "Esperar a que disminuya el olor del producto",
+                "Trasladar a la persona a un área con aire fresco"
+            ],
+            "indiceCorrecto": 3,
+            "explicacion": "Retirar de la fuente de exposición es crítico para la recuperación respiratoria."
+        },
+        {
+            "id": 29,
+            "texto": "¿Qué peligro resalta la SDS del ácido nítrico?",
+            "opciones": [
+                "Es altamente corrosivo y oxidante fuerte",
+                "Es principalmente inflamable por sí solo",
+                "Solo causa irritación leve en piel",
+                "Presenta riesgo únicamente en envases metálicos"
+            ],
+            "indiceCorrecto": 0,
+            "explicacion": "El ácido nítrico combina peligros de corrosión y oxidación."
+        },
+        {
+            "id": 30,
+            "texto": "¿Cuál es el riesgo principal según la SDS de NaOH?",
+            "opciones": [
+                "Inflamabilidad alta por vapores",
+                "Riesgo de explosión por presión",
+                "Corrosión severa de tejidos",
+                "Toxicidad biológica por microorganismos"
+            ],
+            "indiceCorrecto": 2,
+            "explicacion": "El hidróxido de sodio es una base fuerte altamente corrosiva."
+        },
+        {
+            "id": 31,
+            "texto": "¿Por qué es obligatorio revisar la SDS antes de usar materiales peligrosos?",
+            "opciones": [
+                "Para verificar solo la fecha de compra",
+                "Para evitar usar etiquetas en el envase",
+                "Para reemplazar la capacitación del trabajador",
+                "Para conocer riesgos específicos y controles adecuados"
+            ],
+            "indiceCorrecto": 3,
+            "explicacion": "La consulta previa previene accidentes al informar sobre el manejo seguro."
+        },
+        {
+            "id": 32,
+            "texto": "¿Cuáles son las vías de ingreso de sustancias peligrosas?",
+            "opciones": [
+                "Solo contacto con el uniforme contaminado",
+                "Inhalación, ingestión, contacto dérmico y ocular",
+                "Únicamente inhalación de vapores visibles",
+                "Solo ingestión accidental de productos"
+            ],
+            "indiceCorrecto": 1,
+            "explicacion": "Los químicos pueden entrar al cuerpo por diversas vías, no solo respiratoria."
+        },
+        {
+            "id": 33,
+            "texto": "¿Qué es el NASH en química?",
+            "opciones": [
+                "Un solvente orgánico inflamable",
+                "Un gas comprimido usado en laboratorio",
+                "Es el bisulfato de sodio, una sal ácida utilizada en procesos químicos",
+                "Un sistema de extracción de vapores"
+            ],
+            "indiceCorrecto": 2,
+            "explicacion": "Corresponde a la identificación química del bisulfato de sodio."
+        },
+        {
+            "id": 34,
+            "texto": "¿Qué riesgo principal presenta el NASH?",
+            "opciones": [
+                "Es inflamable como principal peligro",
+                "Solo genera riesgo si se calienta",
+                "No requiere controles si está en envase cerrado",
+                "Es corrosivo y puede causar irritación o quemaduras"
+            ],
+            "indiceCorrecto": 3,
+            "explicacion": "El NASH es una sustancia con propiedades corrosivas."
+        },
+        {
+            "id": 35,
+            "texto": "¿Qué riesgo principal presenta el NASH? (Repetida)",
+            "opciones": [
+                "Es inflamable como principal peligro",
+                "Es corrosivo y puede causar irritación o quemaduras",
+                "Solo genera riesgo si se calienta",
+                "No requiere controles si está en envase cerrado"
+            ],
+            "indiceCorrecto": 1,
+            "explicacion": "Confirmación de su naturaleza corrosiva."
+        },
+        {
+            "id": 36,
+            "texto": "¿Qué hacer en caso de contacto con NASH en los ojos?",
+            "opciones": [
+                "Frotar los ojos para retirar el producto",
+                "Esperar si la irritación parece leve",
+                "Lavar inmediatamente con abundante agua por al menos 15 minutos",
+                "Limpiar únicamente con papel absorbente"
+            ],
+            "indiceCorrecto": 2,
+            "explicacion": "La irrigación inmediata es vital para salvar la visión ante químicos."
+        },
+        {
+            "id": 37,
+            "texto": "¿Qué riesgos me protege al usar dispensadores?",
+            "opciones": [
+                "Inhalación de gases sin necesidad de ventilación",
+                "Incompatibilidad química entre sustancias",
+                "Riesgo eléctrico por equipos conectados",
+                "Derrames, salpicaduras y contacto con materiales peligrosos"
+            ],
+            "indiceCorrecto": 3,
+            "explicacion": "El uso de dispensadores minimiza la manipulación directa."
+        },
+        {
+            "id": 38,
+            "texto": "¿Qué significa SGA?",
+            "opciones": [
+                "Sistema General de Almacenamiento químico",
+                "Sistema Globalmente Armonizado de clasificación y etiquetado de productos químicos",
+                "Seguridad General de Áreas operativas",
+                "Sistema de Gestión Administrativa"
+            ],
+            "indiceCorrecto": 1,
+            "explicacion": "Es el estándar internacional para comunicar peligros químicos."
+        },
+        {
+            "id": 39,
+            "texto": "¿Cómo se etiqueta un material peligroso?",
+            "opciones": [
+                "Solo con el nombre comercial del producto",
+                "Con una etiqueta interna sin pictogramas",
+                "Con el rombo NFPA704 y Sistema Globalmente Armonizado",
+                "Solo con fecha de ingreso y proveedor"
+            ],
+            "indiceCorrecto": 2,
+            "explicacion": "Se utilizan sistemas estandarizados para identificación de riesgos."
+        },
+        {
+            "id": 40,
+            "texto": "¿Cuántos pictogramas principales utiliza el SGA?",
+            "opciones": [
+                "5 pictogramas de peligro",
+                "7 pictogramas de peligro",
+                "12 pictogramas de peligro",
+                "9 pictogramas de peligro"
+            ],
+            "indiceCorrecto": 3,
+            "explicacion": "El sistema SGA define 9 pictogramas específicos para cubrir riesgos físicos y a la salud."
+        }
+    ]
+}
