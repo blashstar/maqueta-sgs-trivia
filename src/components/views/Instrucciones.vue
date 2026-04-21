@@ -152,10 +152,10 @@ onUnmounted(() => {
   .burbuja
     background-color: $sgs-azul-500
     position: absolute
-    top -100px
-    left 50px
-    width 25vw
-    padding 6vw 4vw
+    top -6rem
+    left 3rem
+    width 10rem
+    padding 3rem 2rem
     border-radius 100%
     display: flex
     align-items: center
@@ -168,13 +168,13 @@ onUnmounted(() => {
     &::before
       content ''
       position absolute
-      top 90px
-      left -25px
+      // top 5rem
+      left -1.5rem
       width 0
       height 0
-      border-right: 40px solid $sgs-azul-500
-      border-top 10px solid transparent
-      border-bottom 30px solid transparent
+      border-right: 2rem solid $sgs-azul-500
+      border-top 1.5rem solid transparent
+      border-bottom 0.5rem solid transparent
     
     .texto
       text-wrap balance
