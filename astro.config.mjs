@@ -13,7 +13,6 @@ export default defineConfig({
       appEntrypoint: path.resolve(__dirname, 'src/app.js')
     }),
     AstroPWA({
-      mode: 'development',
       base: '/',
       scope: '/',
       includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
