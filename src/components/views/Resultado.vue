@@ -7,6 +7,33 @@
   .score-card
     span.label Puntuación Final
     span.value {{ Math.floor(puntajeMostrado) }}%
+
+  svg(width="0" height="0")
+    filter#borde-glow
+      feMorphology(
+        in="SourceAlpha"
+        operator="dilate"
+        radius="16"
+        result="borde"
+      )
+      feGaussianBlur(
+        in="borde"
+        stdDeviation="8"
+        result="blur"
+      )
+      feFlood(
+        flood-color="white"
+        result="color"
+      )
+      feComposite(
+        in="color"
+        in2="blur"
+        operator="in"
+        result="glow"
+      )
+      feMerge
+        feMergeNode(in="glow")
+        feMergeNode(in="SourceGraphic")
   
   p.mensaje {{ textoRetroalimentacion }}
   
@@ -96,18 +123,18 @@ onUnmounted(() => {
     margin-bottom 0.5rem
     .supervisor
       width 50vw
-      max-width 200px
+      // max-width 200px
       height auto
       filter drop-shadow(0 10px 20px rgba(0,0,0,0.1))
       animation levitar 3s ease-in-out infinite alternate
       
       @media (min-width: 480px)
         width 40vw
-        max-width 250px
+        // max-width 250px
       
       @media (min-width: 768px)
-        width 35vw
-        max-width 300px
+        width 40vw
+        // max-width 300px
 
   @keyframes levitar
     from
@@ -137,21 +164,26 @@ onUnmounted(() => {
     margin-bottom 1.5rem
     display flex
     flex-direction column
+    justify-content center
     min-width auto
-    width 90%
-    max-width 280px
+    // width 90%
+    // max-width 280px
     box-sizing border-box
+
     
     @media (min-width: 480px)
       padding 2rem 1.5rem
       border-radius 14px
-      max-width 320px
+      // max-width 320px
     
     @media (min-width: 768px)
-      padding 2.5rem 2rem
-      border-radius 16px
+      padding 5vmin
       min-width 300px
-      max-width 400px
+      aspect-ratio 1;
+      // max-width 400px
+      border-radius 100%;
+      margin-block 2vh
+      box-shadow 0 0 10svh $sgs-carbon
     
     .label
       color $sgs-carbon
@@ -165,7 +197,7 @@ onUnmounted(() => {
         font-size 1.1rem
       
       @media (min-width: 768px)
-        font-size 1.2rem
+        font-size 1.5vh
     
     .value
       font-size 5rem
@@ -181,11 +213,15 @@ onUnmounted(() => {
 
   .mensaje
     color $sgs-carbon
+    // text-shadow 0 0 1em black
+    // filter: drop-shadow(0 0 1em black);
+    // -webkit-text-stroke: 1px black;
+    filter: url(#borde-glow);
     margin-bottom 1.5rem
     font-size 1.3rem
     max-width 95%
     margin-inline auto
-    font-weight $peso-medio
+    font-weight bold
     line-height 1.3
     text-wrap: balance
     
@@ -194,20 +230,20 @@ onUnmounted(() => {
       max-width 90%
     
     @media (min-width: 768px)
-      font-size 2rem
+      font-size 2.5vh
       max-width 80%
       margin-bottom 2.5rem
 
   button
     @extend .boton-primario
-    font-size 1.2rem
+    font-size 1.2vh
     padding 0.75rem 2rem
     
     @media (max-width: 480px)
-      font-size 1rem
+      font-size 1.5vh
       padding 0.5rem 1.5rem
     
     @media (min-width: 768px)
-      font-size 1.4rem
+      font-size 2vh
       padding 1rem 3rem
 </style>

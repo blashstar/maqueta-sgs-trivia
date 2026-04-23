@@ -1,30 +1,30 @@
 <template lang="pug">
-.view.respuesta(v-if="preguntaActual")
-  .tarjeta(:class="{ correcta: esCorrecta, incorrecta: !esCorrecta }")
-    h2 {{ esCorrecta ? '¡Correcto!' : '' }}
+.view.respuesta(v-if="preguntaMostrada")
+  .tarjeta(:class="{ correcta: esCorrectaMostrada, incorrecta: !esCorrectaMostrada }")
+    h2 {{ esCorrectaMostrada ? '¡Correcto!' : '' }}
     p.answer-text La respuesta correcta era: 
-      b {{ preguntaActual.opciones[preguntaActual.correcta] }}
+      b {{ preguntaMostrada.opciones[preguntaMostrada.correcta] }}
     .imagen
-      img(:src="esCorrecta ? '/assets/img/supervisor-afirma.png' : '/assets/img/supervisor-apunta.png'")
+      img(:src="esCorrectaMostrada ? '/assets/img/supervisor-afirma.png' : '/assets/img/supervisor-apunta.png'")
   
   button(@click="siguiente") {{ esUltima ? 'Ver Resultados' : 'Siguiente Pregunta' }}
 </template>
 
 <script setup>
-import { computed, onMounted, onUnmounted } from 'vue';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { useTriviaStore } from '../../stores/trivia';
 
 const store = useTriviaStore();
 
-const esCorrecta = computed(() => store.esCorrecta);
-const preguntaActual = computed(() => store.preguntas[store.indicePreguntaActual]);
+const preguntaMostrada = ref(null);
+const esCorrectaMostrada = ref(false);
 const esUltima = computed(() => store.indicePreguntaActual === store.preguntas.length - 1);
 
 const leerRespuesta = () => {
-  if (!preguntaActual.value) return;
+  if (!preguntaMostrada.value) return;
   
-  const textoRespuesta = preguntaActual.value.opciones[preguntaActual.value.correcta];
-  const texto = esCorrecta.value ? '¡Correcto!' : 'La respuesta correcta era: ';
+  const textoRespuesta = preguntaMostrada.value.opciones[preguntaMostrada.value.correcta];
+  const texto = esCorrectaMostrada.value ? '¡Correcto!' : 'La respuesta correcta era: ';
 
   const mensaje = new SpeechSynthesisUtterance(`${texto} ${textoRespuesta}`);
   mensaje.lang = 'es-ES';
@@ -42,10 +42,16 @@ const siguiente = () => {
 };
 
 onMounted(() => {
-  if (!preguntaActual.value) {
+  const preguntaActual = store.preguntas[store.indicePreguntaActual];
+  if (!preguntaActual) {
     store.cambiarVista('pregunta');
     return;
   }
+
+  // Congela el contenido mostrado para evitar que cambie durante la transición de vista.
+  preguntaMostrada.value = preguntaActual;
+  esCorrectaMostrada.value = store.esCorrecta;
+
   leerRespuesta();
 });
 
@@ -75,10 +81,11 @@ onUnmounted(() => {
     
     @media (min-width: 600px)
       display grid
-      grid-template-columns 1fr 30%
+      grid-template-columns 1fr 35%
       grid-template-rows auto 1fr
       grid-template-areas "titulo imagen" "texto imagen"
       justify-content center
+      align-items start
       padding 2rem
     
     @media (min-width: 768px)
@@ -115,8 +122,9 @@ onUnmounted(() => {
 
   .imagen
     width 50%
-    max-width 200px
+    // max-width 200px
     margin 1rem 0
+    align-self end
     
     @media (min-width: 600px)
       grid-area imagen
@@ -139,7 +147,7 @@ onUnmounted(() => {
       margin-top 1rem
     
     @media (min-width: 768px)
-      font-size 2rem
+      font-size 2vh
     
     b
       color $sgs-gris-900
@@ -149,10 +157,10 @@ onUnmounted(() => {
       word-wrap break-word
       
       @media (min-width: 480px)
-        font-size 2rem
+        font-size 2vh
       
       @media (min-width: 768px)
-        font-size 2.5rem
+        font-size 3vh
 
   button
     font-size 1.2rem
@@ -166,7 +174,7 @@ onUnmounted(() => {
       min-width 180px
     
     @media (min-width: 768px)
-      font-size 1.4rem
+      font-size 2vh
       padding 1rem 3rem
       min-width 250px
 

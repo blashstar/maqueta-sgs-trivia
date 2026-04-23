@@ -6,6 +6,8 @@
     .boca
       .burbuja(ref="burbujaRef")
         span.texto {{ textoBurbuja }}
+
+    
   button(@click="comenzar") ¡Entendido!
 </template>
 
@@ -127,13 +129,15 @@ onUnmounted(() => {
     text-align center
     max-width 100%
     padding 1rem
+    width: 100%;
+    aspect-ratio: 3 / 4;
     
     @media (min-width: 480px)
-      max-width 95vw
+      max-width 85vw
       padding 2rem
     
     @media (min-width: 768px)
-      max-width 85vw
+      max-width 75vw
       padding-inline: 10vw
   
   h2
@@ -152,14 +156,14 @@ onUnmounted(() => {
     margin-bottom 1rem
     
     @media (min-width: 480px)
-      max-width 80vw
+      max-width 90vw
     
     @media (min-width: 768px)
-      max-width 60vw
+      max-width 80vw
 
   .supervisor
     width 80vw
-    max-width 320px
+    max-width 40vw
     height auto
     display block
     margin 0 auto
@@ -170,6 +174,8 @@ onUnmounted(() => {
     left: 51%
     width 1px
     height: 1px
+    // outline 10px solid red
+    
 
   .burbuja
     background-color: $sgs-azul-500
@@ -195,9 +201,9 @@ onUnmounted(() => {
       font-size 1.2rem
     
     @media (min-width: 768px)
-      top -6rem
+      top -5rem
       left 3rem
-      width 10rem
+      width 15rem
       padding 3rem 2rem
       font-size 1.5rem
 
@@ -221,10 +227,10 @@ onUnmounted(() => {
 
   button
     @extend .boton-primario
-    width 100%
-    max-width 320px
-    font-size 1.3rem
-    padding 0.75rem 2rem
+    width fit-content
+    // max-width 320px
+    font-size 2vh
+    padding 0.5em 2em
     
     @media (max-width: 480px)
       font-size 1rem

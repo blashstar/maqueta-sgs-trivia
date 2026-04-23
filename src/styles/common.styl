@@ -53,7 +53,7 @@ p
   display inline-block
   padding 0.75rem 1.5rem
   border-radius 3em
-  font-size 2rem
+  font-size 2vh
   font-weight $peso-negrita
   text-decoration none
   transition all 0.3s ease
@@ -61,6 +61,7 @@ p
   border none
   text-wrap balance
   user-select none
+  box-shadow 0 0 2em .5em white;
   
   // Para tablets y dispositivos de ancho medio (1080px incluido)
   @media (max-width: 1080px)
@@ -76,7 +77,7 @@ p
   background-color $sgs-naranja
   color $sgs-blanco
   padding 0.5em 2em
-  box-shadow 0 4px 12px rgba(202, 67, 0, 0.3)
+  box-shadow 0 0 2em .5em white;
   &:hover
     background-color darken($sgs-naranja, 10%)
 
@@ -102,8 +103,8 @@ button
   box-sizing border-box
   
   @media (orientation: landscape)
-    flex-direction row
-    gap 2rem
+    // flex-direction row
+    // gap 2rem
 
 
 .tarjeta
@@ -128,5 +129,5 @@ button
     padding 4rem 3rem
   
   @media (orientation: landscape)
-    flex-direction row
-    gap 2rem
+    // flex-direction row
+    // gap 2rem

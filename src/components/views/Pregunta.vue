@@ -6,10 +6,10 @@
       span Puntos: {{ store.puntuacion }}
     
     //- Solo mostramos el contenido si hay una pregunta cargada
-    div(v-if="preguntaActual && preguntaActual.texto")
+    div.contenido(v-if="preguntaActual && preguntaActual.texto")
       .texto 
         img(src="/assets/img/supervisor-pensando.png")
-        span {{ preguntaActual.texto }}
+        span {{ preguntaActual.texto }} 
       
       .tiempo-container
         .tiempo(ref="barraTiempo", :class="{ 'es-circulo': tiempoRestante === 0 }")
@@ -120,12 +120,16 @@ watch(() => store.indicePreguntaActual, () => {
     align-items stretch
     justify-self: stretch
     padding 1rem
+    box-sizing border-box
+    justify-content start
     
     @media (min-width: 480px)
       padding 2rem
     
     @media (min-width: 768px)
       padding 4rem 3rem
+      aspect-ratio 3/4
+
   
   .header
     display flex
@@ -140,41 +144,49 @@ watch(() => store.indicePreguntaActual, () => {
     padding-bottom 0.5rem
     
     @media (min-width: 480px)
-      font-size 0.9rem
+      font-size 1.5vh
       margin-bottom 1.5rem
       padding-bottom 1rem
+
+  .contenido
+    flex 1 1 auto
+    display flex
+    flex-direction column
+    justify-content center
 
   .texto
     color $sgs-naranja
     font-size 1.2rem
-    line-height 1.4
+    line-height 1.3
     margin-bottom: 1rem
     display: flex
-    gap 0.75rem
+    gap 3vw
     align-items flex-start
+    text-align left
     
     @media (min-width: 480px)
       font-size 1.5rem
       margin-bottom: 1.5rem
     
     @media (min-width: 768px)
-      font-size 2rem
+      font-size 2vh
       line-height 1.5
       margin-bottom: 2em
 
     img
-      width: 15%
-      flex 0 0 15%
-      max-width 80px
+      width: 20%
+      flex 0 0 20%
+      // max-width 80px
       object-fit: contain
       object-position: bottom
       
       @media (min-width: 768px)
-        width: 20%
-        flex 0 0 20%
+        width: 30%
+        flex 0 0 30%
 
     span
       flex 1 1 auto;
+      text-wrap balance
 
   .tiempo-container
     box-sizing border-box

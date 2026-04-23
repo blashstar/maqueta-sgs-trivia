@@ -11,10 +11,12 @@
 
 <style lang="stylus">
 .aplicacion
-  width: 100%;
+  max-width: 100%;
+  height 100%;
+  aspect-ratio 5/8
   align-self : stretch;
   margin 0 auto
-  padding 1%
+  padding 10% 1% 2%
   box-sizing border-box
   min-height 100%
   display flex
@@ -23,9 +25,15 @@
   align-items stretch
   font-family 'Inter', sans-serif
 
+  background-image url(/logo-sgs.png)
+  background-size 20%
+  background-repeat no-repeat
+  background-position 50% 5%
+
 .fade-enter-active, .fade-leave-active
-  transition opacity 0.3s ease
+  transition all 0.3s ease
 
 .fade-enter-from, .fade-leave-to
   opacity 0
+  transform scale(2) rotate(10deg)
 </style>
