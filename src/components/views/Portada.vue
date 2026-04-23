@@ -1,19 +1,68 @@
 <template lang="pug">
 .view.portada
+  .modal-bienvenida(v-if="mostrarModalBienvenida")
+    .modal-bienvenida__contenido
+      h2 Preparación inicial
+      p
+        | Para una mejor experiencia en la pantalla táctil, instala la aplicación
+        |  y habilita el modo de pantalla completa.
+      p
+        | Presiona el botón para continuar y habilitar la interacción.
+      button.modal-bienvenida__boton(@click="entenderYContinuar") Entendido
+
   .tarjeta
     h1 Mide tu compromiso #[br] con la seguridad
     img.supervisor(src="/assets/img/supervisor-ok.png")
-    button.btn-inicio(@click="iniciar") Iniciar
+    button.btn-inicio(@click="iniciar" :disabled="mostrarModalBienvenida") Iniciar
 </template>
 
 <script setup>
+import { onMounted, ref } from 'vue';
 import { useTriviaStore } from '../../stores/trivia';
 const store = useTriviaStore();
+const CLAVE_BIENVENIDA = 'trivia_sgs_bienvenida_vista';
+const mostrarModalBienvenida = ref(false);
 
-const iniciar = () => {
+const activarPantallaCompleta = async () => {
+  try {
+    const yaEnPantallaCompleta = document.fullscreenElement != null;
+    if (!yaEnPantallaCompleta) {
+      await document.documentElement.requestFullscreen();
+    }
+  } catch (error) {
+    console.warn('No se pudo activar pantalla completa automáticamente.', error);
+  }
+};
+
+const solicitarInstalacionSiDisponible = async () => {
+  try {
+    if (!window.__pwa) return;
+
+    const yaInstalada = window.__pwa.estaInstaladaComoPWA();
+    if (yaInstalada) return;
+
+    await window.__pwa.solicitarInstalacionPWA();
+  } catch (error) {
+    console.warn('No se pudo solicitar la instalación PWA.', error);
+  }
+};
+
+const iniciar = async () => {
   store.prepararJuego();
   store.cambiarVista('instrucciones');
 };
+
+const entenderYContinuar = async () => {
+  await solicitarInstalacionSiDisponible();
+  await activarPantallaCompleta();
+  localStorage.setItem(CLAVE_BIENVENIDA, 'true');
+  mostrarModalBienvenida.value = false;
+};
+
+onMounted(() => {
+  const bienvenidaVista = localStorage.getItem(CLAVE_BIENVENIDA) === 'true';
+  mostrarModalBienvenida.value = !bienvenidaVista;
+});
 </script>
 
 <style lang="stylus" scoped>
@@ -22,6 +71,51 @@ const iniciar = () => {
 .portada
   display flex
   justify-content center
+  position relative
+  
+  .modal-bienvenida
+    position absolute
+    inset 0
+    z-index 10
+    display flex
+    align-items center
+    justify-content center
+    padding 1rem
+    background rgba(0, 0, 0, 0.65)
+
+    &__contenido
+      width min(90vw, 700px)
+      background $sgs-blanco
+      border-radius 1rem
+      padding 1.5rem
+      text-align center
+      border 2px solid $sgs-naranja
+      box-shadow 0 20px 40px rgba(0, 0, 0, 0.2)
+
+      @media (min-width: 768px)
+        padding 2rem
+        border-radius 1.25rem
+
+      h2
+        margin 0 0 0.75rem
+        color $sgs-naranja
+        font-size 2.4vh
+
+        @media (min-width: 768px)
+          font-size 3vh
+
+      p
+        margin 0 0 0.75rem
+        color $sgs-carbon
+        line-height 1.4
+        font-size 2vh
+
+        @media (min-width: 768px)
+          font-size 2.2vh
+
+    &__boton
+      @extend .boton-primario
+      margin-top 0.5rem
   
   .tarjeta
     text-align center
