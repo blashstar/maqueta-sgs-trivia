@@ -8,7 +8,10 @@
     //- Solo mostramos el contenido si hay una pregunta cargada
     div.contenido(v-if="preguntaActual && preguntaActual.texto")
       .texto 
-        img(src="/assets/img/supervisor-pensando.png")
+        img(
+          src="/assets/img/supervisor-pensando.png"
+          :class="{ 'imagen-cargada': imagenPreguntaLista }"
+        )
         span {{ preguntaActual.texto }} 
       
       .tiempo-container
@@ -34,6 +37,7 @@
 import { computed, onMounted, ref, onUnmounted, watch } from 'vue';
 import { useTriviaStore } from '../../stores/trivia';
 import gsap from 'gsap';
+import { precargarImagen } from '../../utils/imagenes';
 
 const store = useTriviaStore();
 
@@ -41,6 +45,7 @@ const barraTiempo = ref(null);
 const tiempoRestante = ref(store.configuracion.tiempoPorPregunta || 10);
 const tiempoTotal = store.configuracion.tiempoPorPregunta || 10;
 const opcionActiva = ref(null);
+const imagenPreguntaLista = ref(false);
 let animacion = null;
 let esperaFinal = null;
 
@@ -104,6 +109,10 @@ onMounted(() => {
   if (!store.preguntas || store.preguntas.length === 0) {
     store.prepararJuego();
   }
+
+  precargarImagen('/assets/img/supervisor-pensando.png').then(() => {
+    imagenPreguntaLista.value = true;
+  });
   
   // Un pequeño retraso para asegurar que el DOM esté listo
   setTimeout(() => {
@@ -199,6 +208,11 @@ watch(() => store.indicePreguntaActual, () => {
       // max-width 80px
       object-fit: contain
       object-position: bottom
+      opacity 0
+      transition opacity 0.35s ease
+
+      &.imagen-cargada
+        opacity 1
       
       @media (min-width: 768px)
         width: 30%

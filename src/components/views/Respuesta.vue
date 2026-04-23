@@ -5,7 +5,10 @@
     p.answer-text La respuesta correcta era: 
       b {{ preguntaMostrada.opciones[preguntaMostrada.correcta] }}
     .imagen
-      img(:src="esCorrectaMostrada ? '/assets/img/supervisor-afirma.png' : '/assets/img/supervisor-apunta.png'")
+      img(
+        :src="esCorrectaMostrada ? '/assets/img/supervisor-afirma.png' : '/assets/img/supervisor-apunta.png'"
+        :class="{ 'imagen-cargada': imagenRespuestaLista }"
+      )
   
   button(@click="siguiente") {{ esUltima ? 'Ver Resultados' : 'Siguiente Pregunta' }}
 </template>
@@ -13,11 +16,13 @@
 <script setup>
 import { computed, onMounted, onUnmounted, ref } from 'vue';
 import { useTriviaStore } from '../../stores/trivia';
+import { precargarImagenes } from '../../utils/imagenes';
 
 const store = useTriviaStore();
 
 const preguntaMostrada = ref(null);
 const esCorrectaMostrada = ref(false);
+const imagenRespuestaLista = ref(false);
 const esUltima = computed(() => store.indicePreguntaActual === store.preguntas.length - 1);
 
 const leerRespuesta = () => {
@@ -51,6 +56,12 @@ onMounted(() => {
   // Congela el contenido mostrado para evitar que cambie durante la transición de vista.
   preguntaMostrada.value = preguntaActual;
   esCorrectaMostrada.value = store.esCorrecta;
+  precargarImagenes([
+    '/assets/img/supervisor-afirma.png',
+    '/assets/img/supervisor-apunta.png'
+  ]).then(() => {
+    imagenRespuestaLista.value = true;
+  });
 
   leerRespuesta();
 });
@@ -134,6 +145,11 @@ onUnmounted(() => {
     img
       width 100%
       height auto
+      opacity 0
+      transition opacity 0.35s ease
+
+      &.imagen-cargada
+        opacity 1
     
 
   .answer-text
