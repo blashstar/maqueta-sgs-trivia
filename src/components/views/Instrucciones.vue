@@ -7,7 +7,9 @@
       .burbuja(ref="burbujaRef")
         span.texto {{ textoBurbuja }}
 
-    
+  ul.lista
+    li(v-for="instruccion in listaInstrucciones")
+      span.texto {{ instruccion.texto }}
   button(@click="comenzar") ¡Entendido!
 </template>
 
@@ -27,7 +29,7 @@ const comenzar = () => {
   Howler.stop(); // Detener todos los audios en reproducción
   store.cambiarVista('pregunta');
 };
-
+  
 /**
  * Función hablar: 
  * - Actualiza el texto de la burbuja y lo anima con GSAP.
@@ -89,7 +91,7 @@ const listaInstrucciones = [
     audio: '/assets/sonidos/tiempo.mp3'
   },
   {
-    texto: `Cada acierto suma ${store.configuracion.puntosPorAcierto} puntos.`,
+    texto: `Cada acierto suma ${store.configuracion.puntosPorAcierto}% de puntaje.`,
     audio: '/assets/sonidos/puntaje.mp3'
   }
 ];
@@ -224,6 +226,27 @@ onUnmounted(() => {
     
     .texto
       text-wrap balance
+
+  .lista
+    list-style-type none
+    padding 0
+    margin 0
+    display flex
+    flex-direction column
+    gap 1rem
+
+    margin 0 auto 3rem auto;
+
+    li
+      font-size 1.5vh
+      line-height 1.4
+      text-align left
+      text-wrap balance
+      padding 0.5em 1em
+      border-radius 0.5em
+      background-color $sgs-azul-100
+      border 1px solid $sgs-naranja
+      color $sgs-carbon
 
   button
     @extend .boton-primario
