@@ -47,9 +47,23 @@ export default defineConfig({
       },
       workbox: {
         navigateFallback: '/',
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,mp3}'],
+        globPatterns: ['**/*.{js,css,html,ico,png,jpg,jpeg,svg,webp,gif,mp3}'],
         maximumFileSizeToCacheInBytes: 5242880,
         runtimeCaching: [
+          {
+            urlPattern: /^\/assets\/img\/.*\.(png|jpg|jpeg|svg|webp|gif)$/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'imagenes-trivia',
+              expiration: {
+                maxEntries: 100,
+                maxAgeSeconds: 60 * 60 * 24 * 365
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          },
           {
             urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
             handler: 'CacheFirst',

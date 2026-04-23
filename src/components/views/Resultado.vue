@@ -1,7 +1,7 @@
 <template lang="pug">
 .view.resultado
   .contenedor-supervisor
-    img.supervisor(:src="rutaImagenSupervisor")
+    img.supervisor(v-if="imagenResultadoLista" :src="rutaImagenSupervisor")
   
   h2 ¡Juego Terminado!
   .score-card
@@ -45,10 +45,12 @@ import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { useTriviaStore } from '../../stores/trivia';
 import { Howl, Howler } from 'howler';
 import gsap from 'gsap';
+import { precargarImagenes } from '../../utils/imagenes';
 
 const store = useTriviaStore();
 const puntajeMostrado = ref(0);
 const puntajeFinal = store.puntuacion;
+const imagenResultadoLista = ref(false);
 
 const rutaImagenSupervisor = computed(() => {
   return puntajeFinal <= 40 
@@ -80,6 +82,13 @@ const reiniciar = () => {
 };
 
 onMounted(() => {
+  precargarImagenes([
+    '/assets/img/supervisor-diciendo.png',
+    '/assets/img/supervisor-ok.png'
+  ]).then(() => {
+    imagenResultadoLista.value = true;
+  });
+
   // Animación del puntaje
   gsap.to(puntajeMostrado, {
     value: puntajeFinal,

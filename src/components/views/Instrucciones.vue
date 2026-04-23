@@ -2,7 +2,7 @@
 .vista.instrucciones: .tarjeta
   h2 Instrucciones
   .contenido
-    img.supervisor(src="/assets/img/supervisor-diciendo.png")
+    img.supervisor(v-if="imagenInstruccionesLista" src="/assets/img/supervisor-diciendo.png")
     .boca
       .burbuja(ref="burbujaRef")
         span.texto {{ textoBurbuja }}
@@ -18,10 +18,12 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import { useTriviaStore } from '../../stores/trivia';
 import { Howl, Howler } from 'howler';
 import gsap from 'gsap';
+import { precargarImagen } from '../../utils/imagenes';
 
 const store = useTriviaStore();
 const textoBurbuja = ref('');
 const burbujaRef = ref(null);
+const imagenInstruccionesLista = ref(false);
 let secuenciaActiva = true;
 
 const comenzar = () => {
@@ -113,6 +115,9 @@ const ejecutarSecuencia = async () => {
 onMounted(() => {
   // Inicializamos la burbuja oculta
   gsap.set(burbujaRef.value, { scale: 0, opacity: 0 });
+  precargarImagen('/assets/img/supervisor-diciendo.png').then(() => {
+    imagenInstruccionesLista.value = true;
+  });
   ejecutarSecuencia();
 });
 

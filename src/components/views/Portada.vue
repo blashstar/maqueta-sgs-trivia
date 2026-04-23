@@ -12,16 +12,18 @@
 
   .tarjeta
     h1 Mide tu compromiso #[br] con la seguridad
-    img.supervisor(src="/assets/img/supervisor-ok.png")
+    img.supervisor(v-if="imagenPortadaLista" src="/assets/img/supervisor-ok.png")
     button.btn-inicio(@click="iniciar" :disabled="mostrarModalBienvenida") Iniciar
 </template>
 
 <script setup>
 import { onMounted, ref } from 'vue';
 import { useTriviaStore } from '../../stores/trivia';
+import { precargarImagen } from '../../utils/imagenes';
 const store = useTriviaStore();
 const CLAVE_BIENVENIDA = 'trivia_sgs_bienvenida_vista';
 const mostrarModalBienvenida = ref(false);
+const imagenPortadaLista = ref(false);
 
 const activarPantallaCompleta = async () => {
   try {
@@ -62,6 +64,9 @@ const entenderYContinuar = async () => {
 onMounted(() => {
   const bienvenidaVista = localStorage.getItem(CLAVE_BIENVENIDA) === 'true';
   mostrarModalBienvenida.value = !bienvenidaVista;
+  precargarImagen('/assets/img/supervisor-ok.png').then(() => {
+    imagenPortadaLista.value = true;
+  });
 });
 </script>
 
