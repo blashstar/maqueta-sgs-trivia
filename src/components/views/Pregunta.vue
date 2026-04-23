@@ -19,6 +19,13 @@
         button.option(
           v-for="opt in preguntaActual.opciones" 
           :key="opt"
+          :class="{ activa: opcionActiva === opt }"
+          @mousedown="activarOpcion(opt)"
+          @mouseup="desactivarOpcion(opt)"
+          @mouseleave="desactivarOpcion(opt)"
+          @touchstart="activarOpcion(opt)"
+          @touchend="desactivarOpcion(opt)"
+          @touchcancel="desactivarOpcion(opt)"
           @click="seleccionar(opt)"
         ) {{ opt }}
 </template>
@@ -33,6 +40,7 @@ const store = useTriviaStore();
 const barraTiempo = ref(null);
 const tiempoRestante = ref(store.configuracion.tiempoPorPregunta || 10);
 const tiempoTotal = store.configuracion.tiempoPorPregunta || 10;
+const opcionActiva = ref(null);
 let animacion = null;
 let esperaFinal = null;
 
@@ -76,9 +84,20 @@ const preguntaActual = computed(() => {
 });
 
 const seleccionar = (opt) => {
+  opcionActiva.value = null;
   if (animacion) animacion.pause();
   if (esperaFinal) esperaFinal.kill();
   store.seleccionarRespuesta(opt);
+};
+
+const activarOpcion = (opcion) => {
+  opcionActiva.value = opcion;
+};
+
+const desactivarOpcion = (opcion) => {
+  if (opcionActiva.value === opcion) {
+    opcionActiva.value = null;
+  }
 };
 
 onMounted(() => {
@@ -97,6 +116,7 @@ onUnmounted(() => {
 });
 
 watch(() => store.indicePreguntaActual, () => {
+  opcionActiva.value = null;
   iniciarReloj();
 });
 </script>
@@ -279,7 +299,7 @@ watch(() => store.indicePreguntaActual, () => {
       @media (min-width: 1080px)
         font-size 1.8rem
       
-      &:hover
+      &:active, &:focus, &.activa
         background $sgs-naranja
         color $sgs-blanco
         border-color $sgs-naranja
