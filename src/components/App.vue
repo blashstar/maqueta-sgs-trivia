@@ -1,16 +1,33 @@
 <template lang="pug">
 .aplicacion
+  button.boton-inicio-global(
+    v-if="rutaActual.name !== 'portada'"
+    type="button"
+    @click="triviaStore.cambiarVista('portada')"
+    aria-label="Volver al inicio"
+  )
+    img(src="/assets/img/volver.svg")
   router-view(v-slot="{ Component }")
     transition(name="fade" mode="out-in")
       component(:is="Component")
 </template>
 
 <script setup>
+import { useTriviaStore } from '../stores/trivia';
+import { useRoute } from 'vue-router';
+
 // Plugins are registered in src/app.js
+// biome-ignore lint/correctness/noUnusedVariables: se utiliza en el template Pug
+const triviaStore = useTriviaStore();
+// biome-ignore lint/correctness/noUnusedVariables: se utiliza en el template Pug
+const rutaActual = useRoute();
+
+
 </script>
 
 <style lang="stylus">
 .aplicacion
+  position relative
   max-width: 100%;
   height 100%;
   aspect-ratio 5/8
@@ -29,6 +46,30 @@
   background-size 20%
   background-repeat no-repeat
   background-position 50% 5%
+
+.boton-inicio-global
+  position absolute
+  top 1rem
+  left 1rem
+  z-index 20
+  border none
+  border-radius 0.5rem
+  padding 0.5rem 1.5rem
+  background-color rgba(0, 0, 0, 0.5)
+  color #fff
+  font-weight 700
+  font-size 0.9rem
+  cursor pointer
+
+  &:hover
+    background-color rgba(0, 0, 0, 0.8)
+
+  &:focus-visible
+    outline 2px solid #fff
+    outline-offset 2px
+
+  img
+    width 4vw
 
 .fade-enter-active, .fade-leave-active
   transition all 0.3s ease

@@ -195,7 +195,7 @@ onUnmounted(() => {
     background-color: $sgs-azul-500
     position: absolute
     top -4rem
-    left 0
+    left 5vw
     width 8rem
     padding 1.5rem 1rem
     border-radius 100%
@@ -215,11 +215,12 @@ onUnmounted(() => {
       font-size 1.2rem
     
     @media (min-width: 768px)
-      top -5rem
-      left 3rem
-      width 15rem
+      top -6vh
+      left 7vw
+      width 35vw
       padding 3rem 2rem
-      font-size 1.5rem
+      font-size 2vh
+      aspect-ratio 3/1
 
     &::before
       content ''
