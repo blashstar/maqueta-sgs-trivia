@@ -416,15 +416,15 @@
         },
         {
             "id": 35,
-            "texto": "¿Qué riesgo principal presenta el NASH? (Repetida)",
+            "texto": "¿Qué debe contener el kit antiderrame para controlar derrames de ácidos?",
             "opciones": [
-                "Es inflamable como principal peligro",
-                "Es corrosivo y puede causar irritación o quemaduras",
-                "Solo genera riesgo si se calienta",
-                "No requiere controles si está en envase cerrado"
+                "Material absorbente, señalización, EPP",
+                "Material absorbente, neutralizador, barreras de contención, herramientas de limpieza, bolsas de desecho e instructivo de uso.",
+                "Bolsas de desecho, EPP",
+                "Herramientas de limpieza, barreras de contención, EPP."
             ],
             "indiceCorrecto": 1,
-            "explicacion": "Confirmación de su naturaleza corrosiva."
+            "explicacion": ""
         },
         {
             "id": 36,
