@@ -79,7 +79,7 @@ define(['./workbox-ca84f546'], (function (workbox) { 'use strict';
    */
   workbox.precacheAndRoute([{
     "url": "/",
-    "revision": "0.07irigp5ui"
+    "revision": "0.mrfpkk7ibe"
   }], {
     "directoryIndex": "index.html"
   });
@@ -91,6 +91,15 @@ define(['./workbox-ca84f546'], (function (workbox) { 'use strict';
     "cacheName": "imagenes-trivia",
     plugins: [new workbox.ExpirationPlugin({
       maxEntries: 100,
+      maxAgeSeconds: 31536000
+    }), new workbox.CacheableResponsePlugin({
+      statuses: [0, 200]
+    })]
+  }), 'GET');
+  workbox.registerRoute(/^\/assets\/sonidos\/.*\.mp3$/i, new workbox.CacheFirst({
+    "cacheName": "audios-trivia",
+    plugins: [new workbox.ExpirationPlugin({
+      maxEntries: 50,
       maxAgeSeconds: 31536000
     }), new workbox.CacheableResponsePlugin({
       statuses: [0, 200]
