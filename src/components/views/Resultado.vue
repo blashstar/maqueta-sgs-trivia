@@ -58,23 +58,6 @@ const rutaImagenSupervisor = computed(() => {
     : '/assets/img/supervisor-ok.png';
 });
 
-const textoRetroalimentacion = computed(() => {
-  if (puntajeFinal <= 40) {
-    return "Falta reforzar tu compromiso con la seguridad.";
-  } else {
-    return "Tu nivel de seguridad es de compromiso.";
-  }
-});
-
-const rutaAudio = computed(() => {
-  if (puntajeFinal <= 40) {
-    return '/assets/sonidos/falta_reforzar.mp3';
-  } else if (puntajeFinal >= 60) {
-    return '/assets/sonidos/nivel_compromiso.mp3';
-  }
-  return null;
-});
-
 let sonido = null;
 
 const reiniciar = () => {
@@ -96,10 +79,12 @@ onMounted(() => {
     ease: "power2.in",
   });
 
+
+  const audio = "/assets/sonidos/operacion_mas_segura.mp3"
   // Reproducción de audio
-  if (rutaAudio.value) {
+  if (audio) {
     sonido = new Howl({
-      src: [rutaAudio.value],
+      src: [audio],
       autoplay: true,
       volume: 1,
       onend: () => {
