@@ -3,7 +3,7 @@
   .contenedor-supervisor
     img.supervisor(v-if="imagenResultadoLista" :src="rutaImagenSupervisor")
   
-  h2 ¡Juego Terminado!
+  h2 ¡Este es tu nivel actual de liderazgo en seguridad!
   .score-card
     span.label Puntuación Final
     span.value {{ Math.floor(puntajeMostrado) }}%
@@ -35,9 +35,9 @@
         feMergeNode(in="glow")
         feMergeNode(in="SourceGraphic")
   
-  p.mensaje {{ textoRetroalimentacion }}
+  p.mensaje Con SGS, sigues avanzando hacia una operación más segura
   
-  button(@click="reiniciar") Reiniciar
+  button(@click="reiniciar") Volver al inicio
 </template>
 
 <script setup>

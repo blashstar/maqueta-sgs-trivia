@@ -63,7 +63,8 @@ const entenderYContinuar = async () => {
 
 onMounted(() => {
   const bienvenidaVista = localStorage.getItem(CLAVE_BIENVENIDA) === 'true';
-  mostrarModalBienvenida.value = !bienvenidaVista;
+  const accesoPorHttps = window.location.protocol === 'https:';
+  mostrarModalBienvenida.value = accesoPorHttps && !bienvenidaVista;
   precargarImagen('/assets/img/supervisor-ok.png').then(() => {
     imagenPortadaLista.value = true;
   });
@@ -130,14 +131,14 @@ onMounted(() => {
     
     h1
       font-size 1.8rem
-      line-height 1.3
+      line-height 1.2
       margin-bottom 1rem
       
       @media (min-width: 480px)
         font-size 2.5rem
       
       @media (min-width: 768px)
-        font-size 5rem
+        font-size 4vh
 
   .supervisor
     width 70vw

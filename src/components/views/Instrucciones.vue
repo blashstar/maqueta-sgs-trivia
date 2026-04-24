@@ -92,7 +92,7 @@ const listaInstrucciones = [
     audio: '/assets/sonidos/preguntas.mp3'
   },
   {
-    texto: `Tienes ${store.configuracion.tiempoPorPregunta} segundos por respuesta.`,
+    texto: `${store.configuracion.tiempoPorPregunta} segundos por respuesta.`,
     audio: '/assets/sonidos/tiempo.mp3'
   },
   {
@@ -147,17 +147,21 @@ onUnmounted(() => {
       padding 2rem
     
     @media (min-width: 768px)
-      max-width 75vw
+      max-width 95vw
       padding-inline: 10vw
   
-  h2
+  h1
     color $sgs-naranja
     margin-bottom 1rem
     padding-bottom 0.5rem
     font-size 1.8rem
     
     @media (min-width: 480px)
-      font-size 2.5rem
+      font-size 3vh
+
+  h3
+    font-size 2vh
+    line-height 1.25
 
   .contenido
     max-width 100%
@@ -246,7 +250,7 @@ onUnmounted(() => {
     margin 0 auto 3rem auto;
 
     li
-      font-size 1.5vh
+      font-size 1.75vh
       line-height 1.4
       text-align left
       text-wrap balance
