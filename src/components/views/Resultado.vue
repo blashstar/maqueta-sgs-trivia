@@ -116,7 +116,7 @@ onUnmounted(() => {
   .contenedor-supervisor
     margin-bottom 0.5rem
     .supervisor
-      width 50vw
+      width 40vw
       // max-width 200px
       height auto
       filter drop-shadow(0 10px 20px rgba(0,0,0,0.1))
@@ -173,9 +173,9 @@ onUnmounted(() => {
     @media (min-width: 768px)
       padding 5vmin
       min-width 300px
-      aspect-ratio 1;
+      // aspect-ratio 1;
       // max-width 400px
-      border-radius 100%;
+      // border-radius 100%;
       margin-block 2vh
       box-shadow 0 0 10svh $sgs-carbon
     
@@ -203,7 +203,7 @@ onUnmounted(() => {
         font-size 7rem
       
       @media (min-width: 768px)
-        font-size 10rem
+        font-size 8vh
 
   .mensaje
     color $sgs-carbon
