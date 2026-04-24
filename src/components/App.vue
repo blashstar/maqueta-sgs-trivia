@@ -33,7 +33,7 @@ const rutaActual = useRoute();
   aspect-ratio 5/8
   align-self : stretch;
   margin 0 auto
-  padding 10% 1% 2%
+  padding 15% 1% 2%
   box-sizing border-box
   min-height 100%
   display flex
