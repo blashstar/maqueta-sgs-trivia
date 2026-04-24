@@ -112,6 +112,7 @@ onUnmounted(() => {
   flex-direction column
   align-items center
   padding 0.5rem
+  margin-block 0 auto
   
   .contenedor-supervisor
     margin-bottom 0.5rem
@@ -127,7 +128,7 @@ onUnmounted(() => {
         // max-width 250px
       
       @media (min-width: 768px)
-        width 40vw
+        width 35vw
         // max-width 300px
 
   @keyframes levitar
@@ -154,7 +155,7 @@ onUnmounted(() => {
     padding 1.5rem 1rem
     border-radius 12px
     border 1px solid rgba(0,0,0,0.05)
-    box-shadow 0 10px 30px rgba(0,0,0,0.05)
+    box-shadow 0 0 48px rgba(0,0,0,0.05)
     margin-bottom 1.5rem
     display flex
     flex-direction column
@@ -171,12 +172,12 @@ onUnmounted(() => {
       // max-width 320px
     
     @media (min-width: 768px)
-      padding 5vmin
+      padding 3vmin
       min-width 300px
       // aspect-ratio 1;
       // max-width 400px
-      // border-radius 100%;
-      margin-block 2vh
+      border-radius 3vmin;
+      margin-block 1vh
       box-shadow 0 0 10svh $sgs-carbon
     
     .label
@@ -210,7 +211,7 @@ onUnmounted(() => {
     // text-shadow 0 0 1em black
     // filter: drop-shadow(0 0 1em black);
     // -webkit-text-stroke: 1px black;
-    filter: url(#borde-glow);
+    // filter: url(#borde-glow);
     margin-bottom 1.5rem
     font-size 1.3rem
     max-width 95%
@@ -218,6 +219,10 @@ onUnmounted(() => {
     font-weight bold
     line-height 1.3
     text-wrap: balance
+    border 6px solid $sgs-naranja
+    border-radius 3em
+    background rgba($sgs-blanco, .85)
+    padding .5em 1.2rem
     
     @media (min-width: 480px)
       font-size 1.6rem
@@ -226,7 +231,7 @@ onUnmounted(() => {
     @media (min-width: 768px)
       font-size 2.5vh
       max-width 80%
-      margin-bottom 2.5rem
+      margin 3vh 0 4vh
 
   button
     @extend .boton-primario
