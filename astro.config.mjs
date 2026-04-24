@@ -15,7 +15,7 @@ export default defineConfig({
     AstroPWA({
       base: '/',
       scope: '/',
-      includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
+      includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png', 'logo-sgs.png', 'bg.png'],
       registerType: 'autoUpdate',
       manifest: {
         name: 'Trivia de Seguridad SGS',
@@ -25,6 +25,7 @@ export default defineConfig({
         background_color: '#ffffff',
         display: 'standalone',
         start_url: '/',
+        lang: 'es',
         icons: [
           {
             src: 'favicon.svg',
@@ -57,6 +58,20 @@ export default defineConfig({
               cacheName: 'imagenes-trivia',
               expiration: {
                 maxEntries: 100,
+                maxAgeSeconds: 60 * 60 * 24 * 365
+              },
+              cacheableResponse: {
+                statuses: [0, 200]
+              }
+            }
+          },
+          {
+            urlPattern: /^\/assets\/sonidos\/.*\.mp3$/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'audios-trivia',
+              expiration: {
+                maxEntries: 50,
                 maxAgeSeconds: 60 * 60 * 24 * 365
               },
               cacheableResponse: {
