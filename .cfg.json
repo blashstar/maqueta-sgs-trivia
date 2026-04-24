@@ -286,10 +286,10 @@
       "id": 24,
       "texto": "¿Cuántos ítems tiene una SDS?",
       "opciones": [
-        "La hoja SDS tiene dieciséis ítems.",
-        "La hoja SDS tiene ocho ítems.",
-        "La hoja SDS tiene doce ítems.",
-        "La hoja SDS tiene veinte ítems."
+        "La hoja SDS tiene 16 ítems.",
+        "La hoja SDS tiene 8 ítems.",
+        "La hoja SDS tiene 12 ítems.",
+        "La hoja SDS tiene 20 ítems."
       ],
       "indiceCorrecto": 0,
       "explicacion": "Bajo el estándar SGA, las SDS deben contener dieciséis secciones obligatorias."
