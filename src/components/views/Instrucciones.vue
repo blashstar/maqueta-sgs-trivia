@@ -1,12 +1,15 @@
 <template lang="pug">
 .vista.instrucciones: .tarjeta
-  h2 Instrucciones
+  h1 Instrucciones
+  h3 Pon a prueba tu conocimiento y conviértete en un líder de seguridad junto a SGS. Pon a prueba tu conocimiento y conviértete en un líder de seguridad junto a SGS.
   .contenido
     img.supervisor(v-if="imagenInstruccionesLista" src="/assets/img/supervisor-diciendo.png")
     .boca
       .burbuja(ref="burbujaRef")
         span.texto {{ textoBurbuja }}
 
+  h3 Asume el desafío y verifica tu nivel de liderazgo en seguridad con SGS.
+  
   ul.lista
     li(v-for="instruccion in listaInstrucciones")
       span.texto {{ instruccion.texto }}
@@ -85,15 +88,15 @@ const hablar = (texto, audioRuta) => {
 
 const listaInstrucciones = [
   {
-    texto: `Debes responder ${store.configuracion.preguntasPorJuego} preguntas en total.`,
+    texto: `${store.configuracion.preguntasPorJuego} preguntas rápidas.`,
     audio: '/assets/sonidos/preguntas.mp3'
   },
   {
-    texto: `Tienes ${store.configuracion.tiempoPorPregunta} segundos por pregunta.`,
+    texto: `Tienes ${store.configuracion.tiempoPorPregunta} segundos por respuesta.`,
     audio: '/assets/sonidos/tiempo.mp3'
   },
   {
-    texto: `Cada acierto suma ${store.configuracion.puntosPorAcierto}% de puntaje.`,
+    texto: `Cada acierto fortalece tu puntaje.`,
     audio: '/assets/sonidos/puntaje.mp3'
   }
 ];

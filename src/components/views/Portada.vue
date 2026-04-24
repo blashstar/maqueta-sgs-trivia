@@ -11,9 +11,9 @@
       button.modal-bienvenida__boton(@click="entenderYContinuar") Entendido
 
   .tarjeta
-    h1 Mide tu compromiso #[br] con la seguridad
+    h1 Verifica tu nivel de liderazgo en seguridad con SGS
     img.supervisor(v-if="imagenPortadaLista" src="/assets/img/supervisor-ok.png")
-    button.btn-inicio(@click="iniciar" :disabled="mostrarModalBienvenida") Iniciar
+    button.btn-inicio(@click="iniciar" :disabled="mostrarModalBienvenida") Inicia Aquí
 </template>
 
 <script setup>
