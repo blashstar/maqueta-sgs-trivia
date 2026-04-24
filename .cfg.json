@@ -16,7 +16,7 @@
         "Derrames menores que no requieren control especial."
       ],
       "indiceCorrecto": 2,
-      "explicacion": "Los ácidos fuertes representan peligros severos incluyendo quemaduras y reacciones violentas."
+      "explicacion": "Los ácidos fuertes representan peligros severos, incluyendo quemaduras y reacciones violentas."
     },
     {
       "id": 2,
@@ -180,7 +180,7 @@
       "opciones": [
         "Revisar solo orden y limpieza general.",
         "Verificar únicamente si los envases tienen tapa.",
-        "Inspección de dispensadores, del extractor, lavador de gases, Revisión de envases, etiquetas, fugas y condiciones de almacenamiento.",
+        "Inspección de dispensadores, del extractor, lavador de gases, revisión de envases, etiquetas, fugas y condiciones de almacenamiento.",
         "Revisar solo los equipos antes de auditorías."
       ],
       "indiceCorrecto": 2,
@@ -276,7 +276,7 @@
       "opciones": [
         "Orden de compra del producto.",
         "Registro interno de asistencia.",
-        "La Hoja de Datos de Seguridad (SDS).",
+        "La hoja de datos de seguridad (SDS).",
         "Manual general de mantenimiento."
       ],
       "indiceCorrecto": 2,
@@ -286,13 +286,13 @@
       "id": 24,
       "texto": "¿Cuántos ítems tiene una SDS?",
       "opciones": [
-        "La hoja SDS tiene 16 ítems",
-        "La hoja SDS tiene 8 ítems",
-        "La hoja SDS tiene 12 ítems",
-        "La hoja SDS tiene 20 ítems"
+        "La hoja SDS tiene dieciséis ítems.",
+        "La hoja SDS tiene ocho ítems.",
+        "La hoja SDS tiene doce ítems.",
+        "La hoja SDS tiene veinte ítems."
       ],
       "indiceCorrecto": 0,
-      "explicacion": "Bajo el estándar SGA, las SDS deben contener 16 secciones obligatorias."
+      "explicacion": "Bajo el estándar SGA, las SDS deben contener dieciséis secciones obligatorias."
     },
     {
       "id": 25,
@@ -328,7 +328,7 @@
         "Porque su principal riesgo es manchar el uniforme."
       ],
       "indiceCorrecto": 2,
-      "explicacion": "El ácido fluorhídrico penetra la piel y puede causar daño profundo."
+      "explicacion": "El ácido fluorhídrico penetra la piel y puede causar daño profundo y toxicidad sistémica."
     },
     {
       "id": 28,
@@ -356,7 +356,7 @@
     },
     {
       "id": 30,
-      "texto": "¿Cuál es el riesgo principal según la SDS de NaOH?",
+      "texto": "¿Cuál es el riesgo principal según la SDS del NaOH?",
       "opciones": [
         "Inflamabilidad alta por vapores.",
         "Riesgo de explosión por presión.",
@@ -452,12 +452,12 @@
     },
     {
       "id": 38,
-      "texto": "¿Qué significa SGA?",
+      "texto": "¿Qué significa el SGA?",
       "opciones": [
-        "Sistema General de Almacenamiento químico.",
+        "Sistema general de almacenamiento químico.",
         "Sistema Globalmente Armonizado de clasificación y etiquetado de productos químicos.",
-        "Seguridad General de Áreas operativas.",
-        "Sistema de Gestión Administrativa."
+        "Seguridad general de áreas operativas.",
+        "Sistema de gestión administrativa."
       ],
       "indiceCorrecto": 1,
       "explicacion": "Es el estándar internacional para comunicar peligros químicos."
@@ -484,7 +484,7 @@
         "9 pictogramas de peligro."
       ],
       "indiceCorrecto": 3,
-      "explicacion": "El sistema SGA define 9 pictogramas específicos para cubrir riesgos físicos y a la salud."
+      "explicacion": "El sistema SGA define nueve pictogramas específicos para cubrir riesgos físicos y para la salud."
     }
   ]
 }
