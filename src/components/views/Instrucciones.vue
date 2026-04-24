@@ -1,7 +1,7 @@
 <template lang="pug">
 .vista.instrucciones: .tarjeta
   h1 Instrucciones
-  h3 Pon a prueba tu conocimiento y conviértete en un líder de seguridad junto a SGS. Pon a prueba tu conocimiento y conviértete en un líder de seguridad junto a SGS.
+  h3 Pon a prueba tu conocimiento y conviértete en un líder de seguridad junto a SGS.
   .contenido
     img.supervisor(v-if="imagenInstruccionesLista" src="/assets/img/supervisor-diciendo.png")
     .boca

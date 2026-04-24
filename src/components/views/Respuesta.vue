@@ -1,8 +1,9 @@
 <template lang="pug">
 .view.respuesta(v-if="preguntaMostrada")
   .tarjeta(:class="{ correcta: esCorrectaMostrada, incorrecta: !esCorrectaMostrada }")
-    h2 {{ esCorrectaMostrada ? '¡Correcto!' : '' }}
-    p.answer-text La respuesta correcta era: 
+    h2(v-if="esCorrectaMostrada") ¡Correcto!
+    p.answer-text 
+      span(v-if="!esCorrectaMostrada") La respuesta correcta era: 
       b {{ preguntaMostrada.opciones[preguntaMostrada.correcta] }}
     .imagen
       img(
@@ -76,7 +77,8 @@ onUnmounted(() => {
 
 .respuesta
   text-align center
-  padding 0.5rem
+  padding 0.75rem
+  margin-block 3vh auto
   
   .tarjeta
     padding 1.5rem
