@@ -40,6 +40,16 @@ registerSW({
     console.log('Nuevo contenido disponible. Por favor, recarga la página.');
   },
   onOfflineReady() {
-    console.log('La aplicación está lista para usarse sin conexión.');
+    console.log('✅ La aplicación está lista para usarse sin conexión.');
+    // Mostrar notificación al usuario
+    if ('Notification' in window && Notification.permission === 'granted') {
+      new Notification('Trivia SGS', {
+        body: '✅ App lista para uso offline',
+        icon: '/favicon.svg'
+      });
+    }
+  },
+  onRegisteredError(error) {
+    console.error('❌ Error al registrar el Service Worker:', error);
   },
 });
