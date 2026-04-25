@@ -2,14 +2,14 @@
 .menu-usuario
   button.menu-usuario__boton(
     type="button"
-    @click="alternarMenu"
+    @click.stop="alternarMenu"
     :aria-expanded="menuAbierto"
     aria-label="Abrir menú de usuario"
   )
     img.icono-menu(src="/assets/img/menu.svg" alt="Menú")
 
   transition(name="menu-fade")
-    .menu-usuario__desplegable(v-if="menuAbierto" ref="menuRef")
+    .menu-usuario__desplegable(v-if="menuAbierto" ref="menuRef" @click.stop)
       button.menu-usuario__opcion(
         type="button"
         @click="irAListado"
@@ -32,7 +32,8 @@ const store = useTriviaStore();
 const menuAbierto = ref(false);
 const menuRef = ref(null);
 
-const alternarMenu = () => {
+const alternarMenu = (evento) => {
+  evento.stopPropagation();
   menuAbierto.value = !menuAbierto.value;
 };
 
