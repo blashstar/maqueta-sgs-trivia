@@ -28,6 +28,8 @@ const rutaActual = useRoute();
 </script>
 
 <style lang="stylus">
+@import '../styles/variables.styl'
+
 .aplicacion
   position relative
   max-width: 100%;
@@ -57,14 +59,12 @@ const rutaActual = useRoute();
   border none
   border-radius 0.5rem
   padding 0.5rem 1.5rem
-  background-color rgba(0, 0, 0, 0.5)
+  background-color rgba($sgs-carbon, 0.5)
   color #fff
-  font-weight 700
-  font-size 0.9rem
   cursor pointer
 
   &:hover
-    background-color rgba(0, 0, 0, 0.8)
+    background-color rgba($sgs-carbon, 0.8)
 
   &:focus-visible
     outline 2px solid #fff
