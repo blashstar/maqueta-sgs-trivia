@@ -9,7 +9,7 @@
         span.texto {{ textoBurbuja }}
 
   h3 Asume el desafío y verifica tu nivel de liderazgo en seguridad con SGS.
-  
+
   ul.lista
     li(v-for="instruccion in listaInstrucciones")
       span.texto {{ instruccion.texto }}
@@ -34,9 +34,9 @@ const comenzar = () => {
   Howler.stop(); // Detener todos los audios en reproducción
   store.cambiarVista('pregunta');
 };
-  
+
 /**
- * Función hablar: 
+ * Función hablar:
  * - Actualiza el texto de la burbuja y lo anima con GSAP.
  * - Reproduce el audio usando Howler.js.
  * - Retorna una promesa que se resuelve cuando el audio termina o se cancela.
@@ -52,9 +52,9 @@ const hablar = (texto, audioRuta) => {
       duration: 0.3,
       onComplete: () => {
         if (!secuenciaActiva) return resolve();
-        
+
         textoBurbuja.value = texto;
-        
+
         // Animación de entrada
         gsap.to(burbujaRef.value, {
           scale: 1,
@@ -141,21 +141,21 @@ onUnmounted(() => {
     padding 1rem
     width: 100%;
     aspect-ratio: 3 / 4;
-    
+
     @media (min-width: 480px)
       max-width 85vw
       padding 2rem
-    
+
     @media (min-width: 768px)
       max-width 95vw
       padding-inline: 10vw
-  
+
   h1
     color $sgs-naranja
     margin-bottom 1rem
     padding-bottom 0.5rem
     font-size 1.8rem
-    
+
     @media (min-width: 480px)
       font-size 3vh
 
@@ -168,10 +168,10 @@ onUnmounted(() => {
     margin-inline auto
     position relative
     margin-bottom 1rem
-    
+
     @media (min-width: 480px)
       max-width 90vw
-    
+
     @media (min-width: 768px)
       max-width 80vw
 
@@ -189,7 +189,7 @@ onUnmounted(() => {
     width 1px
     height: 1px
     // outline 10px solid red
-    
+
 
   .burbuja
     background-color: $sgs-azul-500
@@ -206,14 +206,14 @@ onUnmounted(() => {
     color: $sgs-blanco
     font-size: 1rem
     transform-origin bottom left
-    
+
     @media (min-width: 480px)
       top -5rem
       left 1rem
       width 9rem
       padding 2rem 1.5rem
       font-size 1.2rem
-    
+
     @media (min-width: 768px)
       top -6vh
       left 7vw
@@ -231,12 +231,12 @@ onUnmounted(() => {
       border-right: 1.5rem solid $sgs-azul-500
       border-top 1rem solid transparent
       border-bottom 0.5rem solid transparent
-      
+
       @media (min-width: 768px)
         left -1.5rem
         border-right: 2rem solid $sgs-azul-500
         border-top 1.5rem solid transparent
-    
+
     .texto
       text-wrap balance
 
@@ -267,7 +267,7 @@ onUnmounted(() => {
     // max-width 320px
     font-size 2vh
     padding 0.5em 2em
-    
+
     @media (max-width: 480px)
       font-size 1rem
       padding 0.5rem 1.5rem
