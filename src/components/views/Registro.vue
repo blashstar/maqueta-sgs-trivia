@@ -4,72 +4,75 @@
     h2 Registro de Participante
 
     form.formulario(@submit.prevent="enviarFormulario")
-      .campo(:class="{ 'campo--error': errores.nombre }")
-        label.campo__etiqueta(for="nombre") Nombre
-        input.campo__entrada(
-          type="text"
-          id="nombre"
-          v-model="formulario.nombre"
-          placeholder="Tu nombre"
-          autocomplete="given-name"
-        )
-        span.campo__error(v-if="errores.nombre") {{ errores.nombre }}
+      .formulario__fila
+        .campo(:class="{ 'campo--error': errores.nombre }")
+          label.campo__etiqueta(for="nombre") Nombre
+          input.campo__entrada(
+            type="text"
+            id="nombre"
+            v-model="formulario.nombre"
+            placeholder="Tu nombre"
+            autocomplete="given-name"
+          )
+          span.campo__error(v-if="errores.nombre") {{ errores.nombre }}
 
-      .campo(:class="{ 'campo--error': errores.apellido }")
-        label.campo__etiqueta(for="apellido") Apellido
-        input.campo__entrada(
-          type="text"
-          id="apellido"
-          v-model="formulario.apellido"
-          placeholder="Tu apellido"
-          autocomplete="family-name"
-        )
-        span.campo__error(v-if="errores.apellido") {{ errores.apellido }}
+        .campo(:class="{ 'campo--error': errores.apellido }")
+          label.campo__etiqueta(for="apellido") Apellido
+          input.campo__entrada(
+            type="text"
+            id="apellido"
+            v-model="formulario.apellido"
+            placeholder="Tu apellido"
+            autocomplete="family-name"
+          )
+          span.campo__error(v-if="errores.apellido") {{ errores.apellido }}
 
-      .campo(:class="{ 'campo--error': errores.celular }")
-        label.campo__etiqueta(for="celular") Celular
-        input.campo__entrada(
-          type="tel"
-          id="celular"
-          v-model="formulario.celular"
-          placeholder="Ej: 3001234567"
-          autocomplete="tel"
-          @input="formatearCelular"
-        )
-        span.campo__error(v-if="errores.celular") {{ errores.celular }}
+      .formulario__fila
+        .campo(:class="{ 'campo--error': errores.correo }")
+          label.campo__etiqueta(for="correo") Correo electrónico
+          input.campo__entrada(
+            type="email"
+            id="correo"
+            v-model="formulario.correo"
+            placeholder="correo@ejemplo.com"
+            autocomplete="email"
+          )
+          span.campo__error(v-if="errores.correo") {{ errores.correo }}
 
-      .campo(:class="{ 'campo--error': errores.correo }")
-        label.campo__etiqueta(for="correo") Correo electrónico
-        input.campo__entrada(
-          type="email"
-          id="correo"
-          v-model="formulario.correo"
-          placeholder="correo@ejemplo.com"
-          autocomplete="email"
-        )
-        span.campo__error(v-if="errores.correo") {{ errores.correo }}
+        .campo(:class="{ 'campo--error': errores.celular }")
+          label.campo__etiqueta(for="celular") Celular
+          input.campo__entrada(
+            type="tel"
+            id="celular"
+            v-model="formulario.celular"
+            placeholder="Ej: 3001234567"
+            autocomplete="tel"
+            @input="formatearCelular"
+          )
+          span.campo__error(v-if="errores.celular") {{ errores.celular }}
 
-      .campo(:class="{ 'campo--error': errores.cargo }")
-        label.campo__etiqueta(for="cargo") Cargo
-        input.campo__entrada(
-          type="text"
-          id="cargo"
-          v-model="formulario.cargo"
-          placeholder="Tu cargo en la empresa"
-          autocomplete="organization-title"
-        )
-        span.campo__error(v-if="errores.cargo") {{ errores.cargo }}
+      .formulario__fila
+        .campo(:class="{ 'campo--error': errores.empresa }")
+          label.campo__etiqueta(for="empresa") Empresa
+          input.campo__entrada(
+            type="text"
+            id="empresa"
+            v-model="formulario.empresa"
+            placeholder="Nombre de tu empresa"
+            autocomplete="organization"
+          )
+          span.campo__error(v-if="errores.empresa") {{ errores.empresa }}
 
-      .campo(:class="{ 'campo--error': errores.empresa }")
-        label.campo__etiqueta(for="empresa") Empresa
-        input.campo__entrada(
-          type="text"
-          id="empresa"
-          v-model="formulario.empresa"
-          placeholder="Nombre de tu empresa"
-          autocomplete="organization"
-        )
-        span.campo__error(v-if="errores.empresa") {{ errores.empresa }}
+        .campo(:class="{ 'campo--error': errores.cargo }")
+          label.campo__etiqueta(for="cargo") Cargo
+          input.campo__entrada(
+            type="text"
+            id="cargo"
+            v-model="formulario.cargo"
+            placeholder="Tu cargo en la empresa"
+            autocomplete="organization-title"
+          )
+          span.campo__error(v-if="errores.cargo") {{ errores.cargo }}
 
       .formulario__mensaje(v-if="mensajeExito")
         p.formulario__exito ✓ {{ mensajeExito }}
@@ -236,6 +239,14 @@ const irAtras = () => {
   display flex
   flex-direction column
   gap 1.5vh
+
+.formulario__fila
+  display grid
+  grid-template-columns 1fr 1fr
+  gap 1.5vh
+
+  @media (max-width: 480px)
+    grid-template-columns 1fr
 
 .campo
   display flex
