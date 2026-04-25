@@ -111,11 +111,12 @@ onUnmounted(() => {
     border none
     background transparent
     color $sgs-carbon
-    font-size 1rem
+    font-size 1.5vh
     font-weight 500
     text-align left
     cursor pointer
     transition background-color 0.15s ease
+    white-space nowrap
 
     &:hover
       background-color rgba($sgs-naranja, 0.1)

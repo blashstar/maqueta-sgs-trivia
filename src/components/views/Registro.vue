@@ -45,7 +45,7 @@
             type="tel"
             id="celular"
             v-model="formulario.celular"
-            placeholder="Ej: 3001234567"
+            placeholder="Ej: +51 900 123 456"
             autocomplete="tel"
             @input="formatearCelular"
           )
@@ -117,8 +117,16 @@ const mensajeExito = ref('');
 const mensajeError = ref('');
 
 const formatearCelular = () => {
-  // Solo permitir números y limitar a 10 dígitos
-  formulario.celular = formulario.celular.replace(/[^0-9]/g, '').slice(0, 10);
+  // Permitir números, signo + y hasta 15 dígitos (incluye código internacional)
+  // Mantiene el + inicial si existe
+  const valor = formulario.celular;
+  const tieneSignoMas = valor.startsWith('+');
+  let numeros = valor.replace(/[^0-9]/g, '');
+
+  // Limitar a 15 dígitos máximo (código país + número)
+  numeros = numeros.slice(0, 15);
+
+  formulario.celular = tieneSignoMas ? '+' + numeros : numeros;
 };
 
 const validarCampo = (campo, valor) => {
@@ -134,12 +142,13 @@ const validarCampo = (campo, valor) => {
   }
 
   if (campo === 'celular' && valor.trim()) {
+    // Extraer solo dígitos para validar longitud
     const celularLimpio = valor.replace(/[^0-9]/g, '');
-    if (celularLimpio.length < 10) {
-      return 'Ingresa un celular válido (mínimo 10 dígitos)';
+    if (celularLimpio.length < 9) {
+      return 'Ingresa un celular válido (mínimo 9 dígitos, incluye código de país)';
     }
-    if (celularLimpio.length > 10) {
-      return 'El celular no puede tener más de 10 dígitos';
+    if (celularLimpio.length > 15) {
+      return 'El número es demasiado largo (máximo 15 dígitos)';
     }
   }
 

@@ -80,18 +80,21 @@ onMounted(() => {
 @import '../../styles/variables.styl'
 
 .listado
-  padding-top 12%
+  padding-top 5%
+  justify-content start
 
   .tarjeta
     width 100%
     max-width 95vw
-    max-height 85vh
+    max-height 90vh
     overflow hidden
     display flex
     flex-direction column
+    height 100%
 
     @media (min-width: 768px)
-      max-width 900px
+      // max-width 900px
+      padding 1vh 3vw 2vh
 
   h2
     font-size 1.6rem
@@ -110,11 +113,12 @@ onMounted(() => {
 
 .tabla-registros
   width 100%
+  table-layout fixed
   border-collapse collapse
   font-size 0.75rem
 
   @media (min-width: 480px)
-    font-size 0.85rem
+    font-size 1vh
 
   thead
     position sticky
@@ -178,5 +182,5 @@ onMounted(() => {
   flex-shrink 0
   align-self center
   padding 0.6rem 1.5rem
-  font-size 1rem
+  font-size 1.5vh
 </style>
