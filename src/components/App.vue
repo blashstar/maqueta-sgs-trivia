@@ -1,5 +1,6 @@
 <template lang="pug">
 .aplicacion
+  MenuUsuario
   button.boton-inicio-global(
     v-if="rutaActual.name !== 'portada'"
     type="button"
@@ -15,6 +16,7 @@
 <script setup>
 import { useTriviaStore } from '../stores/trivia';
 import { useRoute } from 'vue-router';
+import MenuUsuario from './comun/MenuUsuario.vue';
 
 // Plugins are registered in src/app.js
 // biome-ignore lint/correctness/noUnusedVariables: se utiliza en el template Pug
