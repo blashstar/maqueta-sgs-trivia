@@ -125,14 +125,14 @@ const validarCampo = (campo, valor) => {
   if (!valor || valor.trim() === '') {
     return `El campo ${campo} es obligatorio`;
   }
-  
+
   if (campo === 'correo' && valor.trim()) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(valor.trim())) {
       return 'Ingresa un correo electrónico válido';
     }
   }
-  
+
   if (campo === 'celular' && valor.trim()) {
     const celularLimpio = valor.replace(/[^0-9]/g, '');
     if (celularLimpio.length < 10) {
@@ -142,7 +142,7 @@ const validarCampo = (campo, valor) => {
       return 'El celular no puede tener más de 10 dígitos';
     }
   }
-  
+
   return '';
 };
 
@@ -154,7 +154,7 @@ const validarFormulario = () => {
   errores.cargo = validarCampo('cargo', formulario.cargo);
   errores.empresa = validarCampo('empresa', formulario.empresa);
 
-  return !errores.nombre && !errores.apellido && !errores.celular && 
+  return !errores.nombre && !errores.apellido && !errores.celular &&
          !errores.correo && !errores.cargo && !errores.empresa;
 };
 
@@ -216,13 +216,13 @@ const irAtras = () => {
   .tarjeta
     width 100%
     max-width 90vw
-    padding 1.5rem 1rem
+    padding 2rem 1.5rem
     max-height 85vh
     overflow-y auto
 
     @media (min-width: 480px)
-      max-width 500px
-      padding 2rem 1.5rem
+      // max-width 500px
+      padding 4vh 5vw
 
   h2
     font-size 1.8rem
@@ -234,7 +234,7 @@ const irAtras = () => {
       font-size 2.5vh
 
 .formulario
-  max-width 640px
+  // max-width 640px
   width 100%
   display flex
   flex-direction column
@@ -295,7 +295,7 @@ const irAtras = () => {
 
   p
     margin 0
-    font-size 1rem
+    font-size 1.5vh
 
 .formulario__exito
   color $sgs-verde
