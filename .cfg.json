@@ -2,7 +2,7 @@
   "configuracion": {
     "preguntasTotal": 40,
     "preguntasPorJuego": 5,
-    "tiempoPorPregunta": 10,
+    "tiempoPorPregunta": 20,
     "puntosPorAcierto": 20
   },
   "preguntas": [
