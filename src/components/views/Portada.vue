@@ -51,7 +51,7 @@ const solicitarInstalacionSiDisponible = async () => {
 
 const iniciar = async () => {
   store.prepararJuego();
-  store.cambiarVista('instrucciones');
+  store.cambiarVista('registro');
 };
 
 const entenderYContinuar = async () => {
