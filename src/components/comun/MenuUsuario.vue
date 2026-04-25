@@ -74,7 +74,7 @@ onUnmounted(() => {
     border none
     border-radius 0.5rem
     padding 0.5rem
-    background-color rgba($sgs-carbon, 0.7)
+    background-color rgba($sgs-carbon, 0.5)
     cursor pointer
     transition background-color 0.2s ease
 

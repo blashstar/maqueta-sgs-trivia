@@ -9,14 +9,20 @@
           tr
             th Fecha
             th Nombre
+            th Apellido
+            th Celular
             th Correo
+            th Cargo
             th Empresa
         tbody
           tr(v-for="registro in registros" :key="registro.id")
             td
               span.fecha {{ formatearFecha(registro.fecha) }}
             td {{ registro.nombre }}
+            td {{ registro.apellido }}
+            td {{ registro.celular }}
             td {{ registro.correo }}
+            td {{ registro.cargo }}
             td {{ registro.empresa }}
 
     .estado(v-else)
@@ -85,7 +91,7 @@ onMounted(() => {
     flex-direction column
 
     @media (min-width: 768px)
-      max-width 800px
+      max-width 900px
 
   h2
     font-size 1.6rem
@@ -105,10 +111,10 @@ onMounted(() => {
 .tabla-registros
   width 100%
   border-collapse collapse
-  font-size 0.85rem
+  font-size 0.75rem
 
   @media (min-width: 480px)
-    font-size 1rem
+    font-size 0.85rem
 
   thead
     position sticky
@@ -118,7 +124,7 @@ onMounted(() => {
     th
       background $sgs-naranja
       color $sgs-blanco
-      padding 0.75rem 0.5rem
+      padding 0.6rem 0.4rem
       text-align left
       font-weight 600
       white-space nowrap
@@ -137,16 +143,16 @@ onMounted(() => {
         background rgba($sgs-naranja, 0.05)
 
     td
-      padding 0.65rem 0.5rem
+      padding 0.5rem 0.4rem
       color $sgs-carbon
       vertical-align middle
 
       @media (min-width: 480px)
-        padding 0.75rem 0.75rem
+        padding 0.6rem 0.5rem
 
   .fecha
     white-space nowrap
-    font-size 0.8rem
+    font-size 0.7rem
     color rgba($sgs-carbon, 0.7)
 
 .estado

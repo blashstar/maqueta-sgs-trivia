@@ -4,12 +4,12 @@ import Dexie from 'dexie';
 export const db = new Dexie('sgs-trivia');
 
 db.version(1).stores({
-  registros: '++id, nombre, correo, empresa, fecha'
+  registros: '++id, nombre, apellido, celular, correo, cargo, empresa, fecha'
 });
 
 /**
  * Guarda un nuevo registro en la base de datos
- * @param {Object} datos - Datos del registro { nombre, correo, empresa }
+ * @param {Object} datos - Datos del registro { nombre, apellido, celular, correo, cargo, empresa }
  * @returns {Promise<number>} - ID del registro creado
  */
 export async function guardarRegistro(datos) {
