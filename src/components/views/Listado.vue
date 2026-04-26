@@ -41,14 +41,15 @@ const tablaContainer = ref(null);
 
 const formatearFecha = (timestamp) => {
   const fecha = new Date(timestamp);
-  // Convierte explícitamente a string para exportación Excel
-  return String(fecha.toLocaleDateString('es-ES', {
+  // Formato peruano: DD/MM/YYYY HH:mm
+  return fecha.toLocaleDateString('es-PE', {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
     hour: '2-digit',
-    minute: '2-digit'
-  }));
+    minute: '2-digit',
+    hour12: false
+  });
 };
 
 const columnas = [
@@ -177,28 +178,13 @@ const inicializarTabla = () => {
 const exportarExcel = () => {
   if (!tabla.value) return;
   
-  // Obtener datos y convertir fecha explícitamente a string con formato forzado para Excel
-  const datosParaExportar = tabla.value.getData().map(registro => {
-    // Formatear fecha como string legible
-    const fechaFormateada = formatearFecha(registro.fecha);
-    
-    return {
-      nombre: registro.nombre || '',
-      apellido: registro.apellido || '',
-      celular: registro.celular || '',
-      correo: registro.correo || '',
-      cargo: registro.cargo || '',
-      empresa: registro.empresa || '',
-      // Agregar tab al inicio para forzar formato texto en Excel
-      fecha: '\t' + fechaFormateada
-    };
-  });
-  
-  // Exportar con datos explícitamente como strings
+  // Exportar usando los valores formateados visibles (no los datos crudos)
+  // formatted: true usa el formatter de la columna para la fecha
   tabla.value.download('xlsx', 'registros_sgs.xlsx', {
     sheetName: 'Registros',
-    fileName: `registros_sgs_${new Date().toISOString().split('T')[0]}`,
-    data: datosParaExportar
+    fileName: `registros_sgs_${new Date().toISOString().split('T')[0]}`
+  }, {
+    formatted: true  // ← Exporta valores formateados como cadenas
   });
 };
 
