@@ -119,33 +119,43 @@ const inicializarTabla = () => {
     // Traducción completa al español
     langs: {
       'es-es': {
-        pagination: {
-          first: 'Primera',
-          firstTitle: 'Primera página',
-          prev: '←',
-          prevTitle: 'Página anterior',
-          next: '→',
-          nextTitle: 'Siguiente página',
-          last: 'Última',
-          lastTitle: 'Última página',
-          counter: '{count} registros encontrados'
-        },
         data: {
-          loading: 'Cargando registros...',
-          error: 'Error al cargar datos',
-          noData: 'No hay registros disponibles'
-        },
-        columns: {
-          item: 'registro',
-          items: 'registros'
-        },
-        ajax: {
-          loading: 'Cargando',
+          loading: 'Cargando...',
           error: 'Error'
         },
         groups: {
-          item: 'grupo',
-          items: 'grupos'
+          item: 'registro',
+          items: 'registros'
+        },
+        pagination: {
+          page_size: 'Filas por página',
+          page_title: 'Mostrar página',
+          first: 'Primera',
+          first_title: 'Primera página',
+          last: 'Última',
+          last_title: 'Última página',
+          prev: 'Anterior',
+          prev_title: 'Página anterior',
+          next: 'Siguiente',
+          next_title: 'Siguiente página',
+          all: 'Todas',
+          counter: {
+            showing: 'Mostrando',
+            of: 'de',
+            rows: 'registros',
+            pages: 'páginas'
+          }
+        },
+        headerFilters: {
+          default: 'filtrar columna...',
+          columns: {
+            nombre: 'filtrar nombre...',
+            apellido: 'filtrar apellido...',
+            celular: 'filtrar celular...',
+            correo: 'filtrar correo...',
+            cargo: 'filtrar cargo...',
+            empresa: 'filtrar empresa...'
+          }
         }
       }
     },
