@@ -113,13 +113,8 @@ const inicializarTabla = () => {
     paginationInitialPage: 1,
     paginationSizeSelectorLabel: 'filas',
     
-    // Ordenamiento y movilidad
+    // Ordenamiento
     headerSort: true,
-    movableColumns: false,
-    
-    // Alineación y dimensiones
-    resizableColumns: true,
-    columnMinWidth: 80,
     
     // Traducción completa al español
     langs: {
@@ -156,20 +151,11 @@ const inicializarTabla = () => {
     },
     locale: 'es-es',
     
-    // Estilos y comportamiento
-    rowHeight: 42,
-    columnHeaderVertAlign: 'middle',
-    cellVertAlign: 'middle',
-    
     // Asegurar que el footer esté al final
-    height: '100%',
-    
-    // Renderizado
-    renderHorizontal: 'virtual',
-    autoColumns: false
+    height: '100%'
   });
   
-  // Forzar recálculo de altura después de renderizar
+  // Forzar recálculo después de renderizar
   setTimeout(() => {
     if (tabla.value) {
       tabla.value.redraw(true);
@@ -317,5 +303,5 @@ onUnmounted(() => {
 </style>
 
 <style lang="stylus">
-@import '../../styles/tabulator-theme.styl'
+@import '../../styles/tabulator-theme-simple.styl'
 </style>
