@@ -41,13 +41,14 @@ const tablaContainer = ref(null);
 
 const formatearFecha = (timestamp) => {
   const fecha = new Date(timestamp);
-  return fecha.toLocaleDateString('es-ES', {
+  // Convierte explícitamente a string para exportación Excel
+  return String(fecha.toLocaleDateString('es-ES', {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
     hour: '2-digit',
     minute: '2-digit'
-  });
+  }));
 };
 
 const columnas = [
@@ -175,14 +176,20 @@ const inicializarTabla = () => {
 
 const exportarExcel = () => {
   if (!tabla.value) return;
-
-  // Obtener datos con fecha formateada
+  
+  // Obtener datos y convertir fecha explícitamente a string
   const datosParaExportar = tabla.value.getData().map(registro => ({
-    ...registro,
-    fecha: formatearFecha(registro.fecha)
+    nombre: String(registro.nombre || ''),
+    apellido: String(registro.apellido || ''),
+    celular: String(registro.celular || ''),
+    correo: String(registro.correo || ''),
+    cargo: String(registro.cargo || ''),
+    empresa: String(registro.empresa || ''),
+    // Convertir timestamp a string formateado para Excel
+    fecha: String(formatearFecha(registro.fecha))
   }));
-
-  // Exportar con datos formateados
+  
+  // Exportar con datos explícitamente como strings
   tabla.value.download('xlsx', 'registros_sgs.xlsx', {
     sheetName: 'Registros',
     fileName: `registros_sgs_${new Date().toISOString().split('T')[0]}`,
