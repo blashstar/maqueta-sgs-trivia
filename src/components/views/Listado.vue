@@ -165,9 +165,18 @@ const inicializarTabla = () => {
 
 const exportarExcel = () => {
   if (!tabla.value) return;
+  
+  // Obtener datos con fecha formateada
+  const datosParaExportar = tabla.value.getData().map(registro => ({
+    ...registro,
+    fecha: formatearFecha(registro.fecha)
+  }));
+  
+  // Exportar con datos formateados
   tabla.value.download('xlsx', 'registros_sgs.xlsx', {
     sheetName: 'Registros',
-    fileName: `registros_sgs_${new Date().toISOString().split('T')[0]}`
+    fileName: `registros_sgs_${new Date().toISOString().split('T')[0]}`,
+    data: datosParaExportar
   });
 };
 
