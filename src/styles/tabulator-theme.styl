@@ -63,7 +63,7 @@ $tabulator-border-width = 1px
     border-bottom 2px solid $tabulator-primary
     position relative
     flex-shrink 0
-    min-height $tabulator-header-height
+    // min-height $tabulator-header-height
     display flex
     flex-direction column
 
@@ -81,94 +81,94 @@ $tabulator-border-width = 1px
     .tabulator-cols
       display flex
 
-      .tabulator-col
-        background transparent
-        color $sgs-blanco
-        border-right 1px solid rgba($sgs-blanco, 0.15)
+    .tabulator-col
+      background transparent
+      color $sgs-blanco
+      border-right 1px solid rgba($sgs-blanco, 0.15)
+      box-sizing border-box
+      display inline-flex
+      flex-direction column
+      justify-content center
+      position relative
+      transition background-color 0.2s ease
+      font-size 1.2vh
+      font-weight 700
+
+      &:hover
+        background-color rgba($sgs-blanco, 0.1)
+
+      &:last-child
+        border-right none
+
+      // Contenido de columna
+      .tabulator-col-content
+        display flex
+        align-items center
+        justify-content space-between
+        width 100%
+        padding 0.7rem 0.5rem
         box-sizing border-box
-        display inline-flex
-        flex-direction column
-        justify-content center
-        position relative
-        transition background-color 0.2s ease
-        font-size 0.7rem
-        font-weight 700
 
-        &:hover
-          background-color rgba($sgs-blanco, 0.1)
+        .tabulator-col-title
+          white-space nowrap
+          overflow hidden
+          text-overflow ellipsis
+          text-transform uppercase
+          letter-spacing 0.3px
+          font-size 1.2vh
+          font-weight 700
+          color $sgs-blanco
 
-        &:last-child
-          border-right none
+        // Icono de ordenamiento
+        .tabulator-col-sorter
+          color $sgs-blanco
+          opacity 0.8
+          font-size 1rem
+          margin-left 0.5rem
+          flex-shrink 0
+          transition opacity 0.2s ease
 
-        // Contenido de columna
-        .tabulator-col-content
-          display flex
-          align-items center
-          justify-content space-between
-          width 100%
-          padding 0.7rem 0.5rem
-          box-sizing border-box
+          &:hover
+            opacity 1
 
-          .tabulator-col-title
-            white-space nowrap
-            overflow hidden
-            text-overflow ellipsis
-            text-transform uppercase
-            letter-spacing 0.3px
-            font-size 0.68rem
-            font-weight 700
-            color $sgs-blanco
+          .tabulator-arrow
+            display block
+            width 0
+            height 0
+            border-left 4px solid transparent
+            border-right 4px solid transparent
+            border-bottom 4px solid $sgs-blanco
+            opacity 0.5
 
-          // Icono de ordenamiento
-          .tabulator-col-sorter
-            color $sgs-blanco
-            opacity 0.8
-            font-size 1rem
-            margin-left 0.5rem
-            flex-shrink 0
-            transition opacity 0.2s ease
-
-            &:hover
+            &.asc
+              border-bottom-color $sgs-blanco
               opacity 1
 
-            .tabulator-arrow
-              display block
-              width 0
-              height 0
-              border-left 4px solid transparent
-              border-right 4px solid transparent
-              border-bottom 4px solid $sgs-blanco
-              opacity 0.5
+            &.desc
+              border-top 4px solid $sgs-blanco
+              border-bottom none
+              opacity 1
 
-              &.asc
-                border-bottom-color $sgs-blanco
-                opacity 1
+      // Columnas congeladas
+      &.tabulator-frozen
+        position sticky
+        left 0
+        z-index 10
+        background: linear-gradient(135deg, $tabulator-primary 0%, $tabulator-primary-dark 100%)
+        box-shadow 2px 0 5px rgba(0, 0, 0, 0.1)
 
-              &.desc
-                border-top 4px solid $sgs-blanco
-                border-bottom none
-                opacity 1
+      // Columna siendo redimensionada
+      &.tabulator-col-moving
+        background rgba($sgs-blanco, 0.2)
+        cursor move
 
-        // Columnas congeladas
-        &.tabulator-frozen
-          position sticky
-          left 0
-          z-index 10
-          background: linear-gradient(135deg, $tabulator-primary 0%, $tabulator-primary-dark 100%)
-          box-shadow 2px 0 5px rgba(0, 0, 0, 0.1)
+    // Grupo de columnas
+    .tabulator-col-group
+      .tabulator-col-group-titles
+        display flex
 
-        // Columna siendo redimensionada
-        &.tabulator-col-moving
-          background rgba($sgs-blanco, 0.2)
-          cursor move
-
-      // Grupo de columnas
-      .tabulator-col-group
-        .tabulator-col-group-titles
-          display flex
-
-          .tabulator-col-title
-            text-align center
+        .tabulator-col-title
+          text-align center
 
     // Filtros de columna (si se habilitan)
     .tabulator-header-filter
@@ -235,7 +235,7 @@ $tabulator-border-width = 1px
           vertical-align middle
           display inline-flex
           align-items center
-          font-size 0.8rem
+          font-size 1.2vh
           box-sizing border-box
           overflow hidden
           text-overflow ellipsis
