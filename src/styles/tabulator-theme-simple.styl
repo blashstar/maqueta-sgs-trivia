@@ -18,10 +18,10 @@
   text-align left
   overflow hidden
   width 100%
-  
+
   &[tabulator-layout="fitDataFill"] .tabulator-tableholder .tabulator-table
     min-width 100%
-  
+
   &[tabulator-layout="fitDataTable"]
     display inline-block
 
@@ -50,10 +50,10 @@
   text-align left
   vertical-align bottom
   overflow hidden
-  
+
   &:last-child
     border-right none
-  
+
   &.tabulator-moving
     position absolute
     border 1px solid $sgs-naranja
@@ -64,7 +64,7 @@
   box-sizing border-box
   position relative
   padding 8px 4px
-  
+
   .tabulator-col-title
     box-sizing border-box
     width 100%
@@ -75,12 +75,12 @@
     text-transform uppercase
     font-size 11px
     letter-spacing 0.5px
-  
+
   .tabulator-col-sorter
     display inline-block
     margin-left 5px
     cursor pointer
-    
+
     .tabulator-arrow
       display block
       width 0
@@ -88,10 +88,10 @@
       border-left 5px solid transparent
       border-right 5px solid transparent
       border-bottom 5px solid rgba($sgs-blanco, 0.5)
-      
+
       &.asc
         border-bottom 5px solid $sgs-blanco
-      
+
       &.desc
         border-top 5px solid $sgs-blanco
         border-bottom none
@@ -102,30 +102,30 @@
 
 .tabulator .tabulator-tableholder
   width 100%
-  
+
   .tabulator-table
     position relative
     background-color $sgs-blanco
     min-width 100%
-    
+
     .tabulator-row
       position relative
       border-bottom 1px solid rgba($sgs-azul-500, 0.15)
       background-color $sgs-blanco
-      
+
       &:nth-child(even)
         background-color rgba($sgs-azul-100, 0.3)
-      
+
       &:hover
         background-color rgba($sgs-naranja, 0.05)
         cursor default
-      
+
       &.tabulator-selected
         background-color rgba($sgs-naranja, 0.1)
-        
+
         &:hover
           background-color rgba($sgs-naranja, 0.12)
-      
+
       .tabulator-cell
         display inline-block
         position relative
@@ -136,21 +136,21 @@
         overflow hidden
         text-overflow ellipsis
         white-space nowrap
-        
+
         &:last-child
           border-right none
-        
+
         &:first-child
           font-weight 500
-        
+
         &.tabulator-editing
           border 2px solid $sgs-naranja
           padding 4px
-        
+
         &.tabulator-validation-fail
           border 2px solid $sgs-rojo
           background rgba($sgs-rojo, 0.05)
-      
+
       &.tabulator-row-moving
         cursor move
         opacity 0.7
@@ -160,19 +160,26 @@
 // =============================================================================
 
 .tabulator .tabulator-footer
+  border-top 2px solid rgba($sgs-azul-500, 0.2)
+  background: linear-gradient(135deg, $sgs-azul-100 0%, rgba($sgs-azul-100, 0.9) 100%)
+
+
+
+
+.tabulator ._tabulator-footer
   padding 10px
   border-top 2px solid rgba($sgs-azul-500, 0.2)
   background: linear-gradient(135deg, $sgs-azul-100 0%, rgba($sgs-azul-100, 0.9) 100%)
   text-align right
   white-space nowrap
-  
+
   .tabulator-paginator
     display flex
     align-items center
     justify-content space-between
     gap 1rem
     flex-wrap wrap
-    
+
     .tabulator-page-size
       background $sgs-blanco
       border 2px solid rgba($sgs-azul-500, 0.3)
@@ -185,26 +192,26 @@
       transition all 0.2s ease
       min-width 70px
       height 36px
-      
+
       &:hover
         border-color $sgs-naranja
         background-color rgba($sgs-naranja, 0.05)
-      
+
       &:focus
         outline none
         border-color $sgs-naranja
         box-shadow 0 0 0 3px rgba($sgs-naranja, 0.15)
-    
+
     .tabulator-paginator-row-label
       font-weight 600
       color $sgs-carbon
       white-space nowrap
       font-size 13px
-    
+
     .tabulator-pages
       display flex
       gap 0.25rem
-      
+
       button
         background $sgs-blanco
         border 2px solid rgba($sgs-azul-500, 0.3)
@@ -217,24 +224,24 @@
         font-weight 600
         cursor pointer
         transition all 0.2s ease
-        
+
         &:hover:not(.active):not(:disabled)
           background rgba($sgs-naranja, 0.1)
           border-color $sgs-naranja
           transform translateY(-1px)
-        
+
         &.active
           background: linear-gradient(135deg, $sgs-naranja 0%, darken($sgs-naranja, 10%) 100%)
           color $sgs-blanco
           border-color $sgs-naranja
           box-shadow 0 2px 4px rgba($sgs-naranja, 0.3)
           font-weight 700
-        
+
         &:disabled
           opacity 0.4
           cursor not-allowed
           transform none
-        
+
         &[data-page='first'],
         &[data-page='prev'],
         &[data-page='next'],
@@ -251,19 +258,19 @@
   &::-webkit-scrollbar
     width 10px
     height 10px
-  
+
   &::-webkit-scrollbar-track
     background rgba($sgs-azul-500, 0.08)
     border-radius 5px
-  
+
   &::-webkit-scrollbar-thumb
     background linear-gradient(135deg, $sgs-naranja 0%, darken($sgs-naranja, 15%) 100%)
     border-radius 5px
     border 2px solid rgba($sgs-azul-500, 0.08)
-    
+
     &:hover
       background linear-gradient(135deg, darken($sgs-naranja, 5%) 0%, darken($sgs-naranja, 20%) 100%)
-  
+
   &::-webkit-scrollbar-corner
     background rgba($sgs-azul-500, 0.08)
 
@@ -280,7 +287,7 @@
   width 100%
   height 100%
   z-index 100
-  
+
   .tabulator-loader-content
     text-align center
     color $sgs-carbon
@@ -294,37 +301,37 @@
 @media (max-width: 768px)
   .tabulator
     font-size 13px
-    
+
     .tabulator-header
       min-height 38px
-      
+
       .tabulator-col
         .tabulator-col-content
           padding 6px 3px
-          
+
           .tabulator-col-title
             font-size 10px
-    
+
     .tabulator-tableholder
       .tabulator-table
         .tabulator-row
           .tabulator-cell
             padding 5px 3px
             font-size 12px
-    
+
     .tabulator-footer
       padding 8px
-      
+
       .tabulator-paginator
         justify-content center
         gap 0.5rem
-        
+
         .tabulator-pages
           button
             min-width 32px
             height 32px
             font-size 12px
-        
+
         .tabulator-page-size
           font-size 12px
           padding 5px 8px
