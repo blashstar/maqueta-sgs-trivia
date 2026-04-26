@@ -177,17 +177,22 @@ const inicializarTabla = () => {
 const exportarExcel = () => {
   if (!tabla.value) return;
   
-  // Obtener datos y convertir fecha explícitamente a string
-  const datosParaExportar = tabla.value.getData().map(registro => ({
-    nombre: String(registro.nombre || ''),
-    apellido: String(registro.apellido || ''),
-    celular: String(registro.celular || ''),
-    correo: String(registro.correo || ''),
-    cargo: String(registro.cargo || ''),
-    empresa: String(registro.empresa || ''),
-    // Convertir timestamp a string formateado para Excel
-    fecha: String(formatearFecha(registro.fecha))
-  }));
+  // Obtener datos y convertir fecha explícitamente a string con formato forzado para Excel
+  const datosParaExportar = tabla.value.getData().map(registro => {
+    // Formatear fecha como string legible
+    const fechaFormateada = formatearFecha(registro.fecha);
+    
+    return {
+      nombre: registro.nombre || '',
+      apellido: registro.apellido || '',
+      celular: registro.celular || '',
+      correo: registro.correo || '',
+      cargo: registro.cargo || '',
+      empresa: registro.empresa || '',
+      // Agregar tab al inicio para forzar formato texto en Excel
+      fecha: '\t' + fechaFormateada
+    };
+  });
   
   // Exportar con datos explícitamente como strings
   tabla.value.download('xlsx', 'registros_sgs.xlsx', {
