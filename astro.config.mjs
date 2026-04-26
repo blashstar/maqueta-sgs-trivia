@@ -16,6 +16,9 @@ export default defineConfig({
       base: '/',
       scope: '/',
       includeAssets: ['favicon.svg', 'favicon.ico', 'robots.txt', 'apple-touch-icon.png', 'logo-sgs.png', 'bg.png'],
+      // Configuración de actualización automática
+      // 'autoUpdate': El SW se actualiza automáticamente sin intervención del usuario
+      // 'prompt': El usuario debe aceptar la actualización manualmente
       registerType: 'autoUpdate',
       manifest: {
         name: 'Trivia de Seguridad SGS',
@@ -50,6 +53,10 @@ export default defineConfig({
         navigateFallback: '/',
         globPatterns: ['**/*.{js,css,html,ico,png,jpg,jpeg,svg,webp,gif,mp3}'],
         maximumFileSizeToCacheInBytes: 5242880,
+        // Limpieza automática de caché antigua
+        cleanupOutdatedCaches: true,
+        // Precachear assets críticos
+        navigateFallbackDenylist: [/^\/api\//],
         runtimeCaching: [
           {
             urlPattern: /^\/assets\/img\/.*\.(png|jpg|jpeg|svg|webp|gif)$/i,
