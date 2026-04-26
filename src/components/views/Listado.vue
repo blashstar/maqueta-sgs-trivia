@@ -27,7 +27,11 @@ import { ref, onMounted, onUnmounted } from 'vue';
 import { useTriviaStore } from '../../stores/trivia';
 import { obtenerRegistros } from '../../db/registroDB';
 import { TabulatorFull as Tabulator } from 'tabulator-tables';
+import * as XLSX from 'xlsx';
 import 'tabulator-tables/dist/css/tabulator.min.css';
+
+// Registrar XLSX globalmente para Tabulator
+window.XLSX = XLSX;
 
 const store = useTriviaStore();
 const registros = ref([]);
