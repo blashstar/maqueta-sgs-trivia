@@ -42,7 +42,8 @@ const tablaContainer = ref(null);
 const formatearFecha = (timestamp) => {
   const fecha = new Date(timestamp);
   // Formato peruano: DD/MM/YYYY HH:mm
-  return fecha.toLocaleDateString('es-PE', {
+  // Agregar apóstrofe al inicio para forzar formato texto en Excel
+  const fechaFormateada = fecha.toLocaleDateString('es-PE', {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
@@ -50,6 +51,7 @@ const formatearFecha = (timestamp) => {
     minute: '2-digit',
     hour12: false
   });
+  return "'" + fechaFormateada;  // ← Apóstrofe fuerza formato texto
 };
 
 const columnas = [
@@ -178,13 +180,10 @@ const inicializarTabla = () => {
 const exportarExcel = () => {
   if (!tabla.value) return;
   
-  // Exportar usando los valores formateados visibles (no los datos crudos)
-  // formatted: true usa el formatter de la columna para la fecha
+  // Exportar usando los datos formateados (con apóstrofe para Excel)
   tabla.value.download('xlsx', 'registros_sgs.xlsx', {
     sheetName: 'Registros',
     fileName: `registros_sgs_${new Date().toISOString().split('T')[0]}`
-  }, {
-    formatted: true  // ← Exporta valores formateados como cadenas
   });
 };
 
