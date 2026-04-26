@@ -13,7 +13,7 @@ $tabulator-font-family = $fuente-principal
 $tabulator-font-size = 0.8rem
 $tabulator-line-height = 1.4
 
-// Colores SGS
+// Colores SGS - aliases para consistencia
 $tabulator-primary = $sgs-naranja
 $tabulator-primary-dark = darken($sgs-naranja, 10%)
 $tabulator-primary-light = lighten($sgs-naranja, 15%)
@@ -26,6 +26,7 @@ $tabulator-border = rgba($sgs-azul-500, 0.15)
 $tabulator-hover = rgba($sgs-naranja, 0.06)
 $tabulator-selected = rgba($sgs-naranja, 0.1)
 $tabulator-success = $sgs-verde
+$tabulator-error = $sgs-rojo
 
 // Dimensiones
 $tabulator-row-height = 42px
@@ -178,7 +179,7 @@ $tabulator-border-width = 1px
         width 100%
         padding 0.4rem 0.6rem
         background $sgs-blanco
-        border 1px solid rgba($sgs-secondary, 0.3)
+        border 1px solid rgba($tabulator-secondary, 0.3)
         border-radius 0.25rem
         font-size 0.75rem
         color $tabulator-text
