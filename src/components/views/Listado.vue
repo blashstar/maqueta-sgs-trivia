@@ -103,7 +103,7 @@ const inicializarTabla = () => {
     data: registros.value,
     columns: columnas,
     layout: 'fitDataFill',
-    
+
     // Paginación mejorada
     pagination: 'local',
     paginationSize: 20,
@@ -112,11 +112,11 @@ const inicializarTabla = () => {
     paginationCounter: 'rows',
     paginationInitialPage: 1,
     paginationSizeSelectorLabel: 'filas',
-    
+
     // Ordenamiento
     headerSort: true,
-    
-    // Traducción completa al español
+
+    // Traducción completa al español con emojis
     langs: {
       'es-es': {
         data: {
@@ -128,43 +128,43 @@ const inicializarTabla = () => {
           items: 'registros'
         },
         pagination: {
-          page_size: 'Filas por página',
+          page_size: 'Filas',
           page_title: 'Mostrar página',
-          first: 'Primera',
+          first: '⏮',
           first_title: 'Primera página',
-          last: 'Última',
+          last: '⏭',
           last_title: 'Última página',
-          prev: 'Anterior',
+          prev: '◀',
           prev_title: 'Página anterior',
-          next: 'Siguiente',
+          next: '▶',
           next_title: 'Siguiente página',
           all: 'Todas',
           counter: {
-            showing: 'Mostrando',
+            showing: '📄',
             of: 'de',
             rows: 'registros',
             pages: 'páginas'
           }
         },
         headerFilters: {
-          default: 'filtrar columna...',
+          default: 'filtrar...',
           columns: {
-            nombre: 'filtrar nombre...',
-            apellido: 'filtrar apellido...',
-            celular: 'filtrar celular...',
-            correo: 'filtrar correo...',
-            cargo: 'filtrar cargo...',
-            empresa: 'filtrar empresa...'
+            nombre: 'nombre...',
+            apellido: 'apellido...',
+            celular: 'celular...',
+            correo: 'correo...',
+            cargo: 'cargo...',
+            empresa: 'empresa...'
           }
         }
       }
     },
     locale: 'es-es',
-    
+
     // Asegurar que el footer esté al final
     height: '100%'
   });
-  
+
   // Forzar recálculo después de renderizar
   setTimeout(() => {
     if (tabla.value) {
@@ -175,13 +175,13 @@ const inicializarTabla = () => {
 
 const exportarExcel = () => {
   if (!tabla.value) return;
-  
+
   // Obtener datos con fecha formateada
   const datosParaExportar = tabla.value.getData().map(registro => ({
     ...registro,
     fecha: formatearFecha(registro.fecha)
   }));
-  
+
   // Exportar con datos formateados
   tabla.value.download('xlsx', 'registros_sgs.xlsx', {
     sheetName: 'Registros',
