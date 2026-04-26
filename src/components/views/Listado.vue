@@ -107,6 +107,7 @@ const inicializarTabla = () => {
     paginationButtonCount: 5,
     paginationCounter: 'rows',
     paginationInitialPage: 1,
+    paginationSizeSelectorLabel: 'filas',
     
     // Ordenamiento y movilidad
     headerSort: true,
@@ -134,6 +135,14 @@ const inicializarTabla = () => {
         columns: {
           item: 'registro',
           items: 'registros'
+        },
+        ajax: {
+          loading: 'Cargando',
+          error: 'Error'
+        },
+        groups: {
+          item: 'grupo',
+          items: 'grupos'
         }
       }
     },
@@ -142,8 +151,19 @@ const inicializarTabla = () => {
     // Estilos y comportamiento
     rowHeight: 42,
     columnHeaderVertAlign: 'middle',
-    cellVertAlign: 'middle'
+    cellVertAlign: 'middle',
+    
+    // Asegurar que el footer esté al final
+    height: '100%',
+    footerElement: '<div></div>'
   });
+  
+  // Forzar recálculo de altura después de renderizar
+  setTimeout(() => {
+    if (tabla.value) {
+      tabla.value.redraw(true);
+    }
+  }, 100);
 };
 
 const exportarExcel = () => {
@@ -296,6 +316,8 @@ onUnmounted(() => {
   border-radius 0.5rem
   overflow hidden
   background-color $sgs-blanco
+  display flex
+  flex-direction column
 
   // Header con colores SGS
   .tabulator-header
@@ -303,14 +325,16 @@ onUnmounted(() => {
     color $sgs-blanco
     font-weight 600
     border-bottom 2px solid $sgs-naranja
-    min-height: 50px
+    flex-shrink 0
+    min-height: 48px
 
     .tabulator-col
       background: transparent
       color $sgs-blanco
       border-right 1px solid rgba($sgs-blanco, 0.15)
-      padding: 0.75rem 0.6rem
+      padding: 0.7rem 0.5rem
       transition background-color 0.2s ease
+      font-size 0.75rem
 
       &:hover
         background-color rgba($sgs-blanco, 0.1)
@@ -319,41 +343,52 @@ onUnmounted(() => {
         border-right none
 
       .tabulator-col-content
+        display flex
+        align-items center
+        gap 0.5rem
+        
         .tabulator-col-title
           white-space nowrap
           text-transform uppercase
-          letter-spacing 0.5px
-          font-size 0.8rem
+          letter-spacing 0.3px
+          font-size 0.7rem
+          font-weight 700
 
       // Icono de ordenamiento
       .tabulator-col-sorter
         color $sgs-blanco
-        opacity 0.7
+        opacity 0.8
+        font-size 1rem
 
         &:hover
           opacity 1
 
   // Cuerpo de la tabla
   .tabulator-tableholder
+    flex 1
+    overflow auto
+    min-height 0
+
     .tabulator-table
       background-color $sgs-blanco
 
       .tabulator-row
         border-bottom 1px solid rgba($sgs-azul-500, 0.12)
         transition all 0.15s ease
+        font-size 0.8rem
 
         &:nth-child(even)
           background-color rgba($sgs-azul-100, 0.5)
 
         &:hover
           background-color rgba($sgs-naranja, 0.06)
-          transform translateX(2px)
 
         .tabulator-cell
-          padding: 0.65rem 0.6rem
+          padding: 0.6rem 0.5rem
           color $sgs-carbon
           border-right 1px solid rgba($sgs-azul-500, 0.08)
           vertical-align middle
+          font-size 0.8rem
 
           &:last-child
             border-right none
@@ -362,18 +397,21 @@ onUnmounted(() => {
           &:first-child
             font-weight 500
             color rgba($sgs-carbon, 0.85)
+            font-size 0.75rem
 
-  // Footer con paginación
+  // Footer con paginación - siempre al final
   .tabulator-footer
-    background: linear-gradient(135deg, $sgs-azul-100 0%, rgba($sgs-azul-100, 0.8) 100%)
-    border-top 2px solid rgba($sgs-azul-500, 0.2)
+    background: linear-gradient(135deg, $sgs-azul-100 0%, rgba($sgs-azul-100, 0.9) 100%)
+    border-top 2px solid rgba($sgs-azul-500, 0.25)
     padding: 0.75rem 1rem
+    flex-shrink 0
+    margin-top auto
 
     .tabulator-paginator
       display flex
       align-items center
       justify-content space-between
-      gap 1rem
+      gap 0.75rem
       color $sgs-carbon
       flex-wrap wrap
 
@@ -382,41 +420,44 @@ onUnmounted(() => {
         background $sgs-blanco
         border 2px solid rgba($sgs-azul-500, 0.3)
         border-radius 0.375rem
-        padding: 0.4rem 0.75rem
+        padding: 0.45rem 0.65rem
         color $sgs-carbon
-        font-size 0.85rem
-        font-weight 500
+        font-size 0.8rem
+        font-weight 600
         cursor pointer
         transition all 0.2s ease
+        min-width: 70px
 
         &:hover
           border-color $sgs-naranja
+          background-color rgba($sgs-naranja, 0.05)
 
         &:focus
           outline none
           border-color $sgs-naranja
-          box-shadow 0 0 0 3px rgba($sgs-naranja, 0.1)
+          box-shadow 0 0 0 3px rgba($sgs-naranja, 0.15)
 
       // Contador de registros
       .tabulator-paginator-row-label
         font-weight 600
         color $sgs-carbon
         white-space nowrap
+        font-size 0.8rem
 
       // Botones de paginación
       .tabulator-pages
         display flex
-        gap 0.375rem
+        gap 0.3rem
 
         button
           background $sgs-blanco
           border 2px solid rgba($sgs-azul-500, 0.3)
           border-radius 0.375rem
-          min-width: 38px
-          height: 38px
-          padding: 0 0.5rem
+          min-width: 36px
+          height: 36px
+          padding: 0 0.4rem
           color $sgs-carbon
-          font-size 0.85rem
+          font-size 0.8rem
           font-weight 600
           cursor pointer
           transition all 0.2s ease
@@ -425,7 +466,7 @@ onUnmounted(() => {
           justify-content center
 
           &:hover:not(.active):not(:disabled)
-            background rgba($sgs-naranja, 0.1)
+            background rgba($sgs-naranja, 0.12)
             border-color $sgs-naranja
             transform translateY(-1px)
 
@@ -433,7 +474,8 @@ onUnmounted(() => {
             background: linear-gradient(135deg, $sgs-naranja 0%, darken($sgs-naranja, 10%) 100%)
             color $sgs-blanco
             border-color $sgs-naranja
-            box-shadow 0 2px 8px rgba($sgs-naranja, 0.3)
+            box-shadow 0 2px 6px rgba($sgs-naranja, 0.35)
+            font-weight 700
 
           &:disabled
             opacity 0.4
@@ -446,7 +488,7 @@ onUnmounted(() => {
           &[data-page='next'],
           &[data-page='last']
             font-weight 700
-            font-size 1rem
+            font-size 0.9rem
 
   // Scrollbars personalizados
   &::-webkit-scrollbar
@@ -480,17 +522,20 @@ onUnmounted(() => {
     .tabulator-header
       .tabulator-col
         padding: 0.5rem 0.3rem
+        font-size 0.65rem
 
         .tabulator-col-title
-          font-size 0.7rem
+          font-size 0.6rem
 
     .tabulator-tableholder
       .tabulator-row
         .tabulator-cell
           padding: 0.5rem 0.3rem
-          font-size 0.75rem
+          font-size 0.7rem
 
     .tabulator-footer
+      padding: 0.5rem
+
       .tabulator-paginator
         justify-content center
         gap 0.5rem
@@ -499,9 +544,10 @@ onUnmounted(() => {
           button
             min-width: 32px
             height: 32px
-            font-size 0.75rem
+            font-size 0.7rem
 
         .tabulator-page-size
-          font-size 0.75rem
-          padding: 0.3rem 0.5rem
+          font-size 0.7rem
+          padding: 0.35rem 0.5rem
+          min-width: 60px
 </style>
