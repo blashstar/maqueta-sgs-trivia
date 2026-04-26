@@ -1,0 +1,515 @@
+/**
+ * Tema SGS para Tabulator v6.4
+ * Basado en tabulator_modern.css con colores corporativos SGS
+ */
+
+@import './variables.styl'
+
+// =============================================================================
+// VARIABLES DE TEMA SGS
+// =============================================================================
+
+$tabulator-font-family = $fuente-principal
+$tabulator-font-size = 0.8rem
+$tabulator-line-height = 1.4
+
+// Colores SGS
+$tabulator-primary = $sgs-naranja
+$tabulator-primary-dark = darken($sgs-naranja, 10%)
+$tabulator-primary-light = lighten($sgs-naranja, 15%)
+$tabulator-secondary = $sgs-azul-500
+$tabulator-secondary-light = $sgs-azul-100
+$tabulator-text = $sgs-carbon
+$tabulator-text-light = rgba($sgs-carbon, 0.7)
+$tabulator-bg = $sgs-blanco
+$tabulator-border = rgba($sgs-azul-500, 0.15)
+$tabulator-hover = rgba($sgs-naranja, 0.06)
+$tabulator-selected = rgba($sgs-naranja, 0.1)
+$tabulator-success = $sgs-verde
+
+// Dimensiones
+$tabulator-row-height = 42px
+$tabulator-header-height = 48px
+$tabulator-cell-padding = 0.6rem 0.5rem
+$tabulator-border-radius = 0.5rem
+$tabulator-border-width = 1px
+
+// =============================================================================
+// TABULATOR CONTAINER
+// =============================================================================
+
+.tabulator
+  font-family $tabulator-font-family
+  font-size $tabulator-font-size
+  line-height $tabulator-line-height
+  position relative
+  border $tabulator-border-width solid rgba($tabulator-secondary, 0.3)
+  border-radius $tabulator-border-radius
+  overflow hidden
+  background-color $tabulator-bg
+  display flex
+  flex-direction column
+  max-width 100%
+
+  // =============================================================================
+  // HEADER
+  // =============================================================================
+
+  .tabulator-header
+    background: linear-gradient(135deg, $tabulator-primary 0%, $tabulator-primary-dark 100%)
+    color $sgs-blanco
+    font-weight 600
+    border-bottom 2px solid $tabulator-primary
+    position relative
+    flex-shrink 0
+    min-height $tabulator-header-height
+    display flex
+    flex-direction column
+
+    // Filtros de grupo (si se usan)
+    .tabulator-header-contents
+      display flex
+      flex-direction column
+
+    .tabulator-frozen
+      position sticky
+      left 0
+      z-index 10
+
+    // Columnas
+    .tabulator-cols
+      display flex
+
+      .tabulator-col
+        background transparent
+        color $sgs-blanco
+        border-right 1px solid rgba($sgs-blanco, 0.15)
+        box-sizing border-box
+        display inline-flex
+        flex-direction column
+        justify-content center
+        position relative
+        transition background-color 0.2s ease
+        font-size 0.7rem
+        font-weight 700
+
+        &:hover
+          background-color rgba($sgs-blanco, 0.1)
+
+        &:last-child
+          border-right none
+
+        // Contenido de columna
+        .tabulator-col-content
+          display flex
+          align-items center
+          justify-content space-between
+          width 100%
+          padding 0.7rem 0.5rem
+          box-sizing border-box
+
+          .tabulator-col-title
+            white-space nowrap
+            overflow hidden
+            text-overflow ellipsis
+            text-transform uppercase
+            letter-spacing 0.3px
+            font-size 0.68rem
+            font-weight 700
+            color $sgs-blanco
+
+          // Icono de ordenamiento
+          .tabulator-col-sorter
+            color $sgs-blanco
+            opacity 0.8
+            font-size 1rem
+            margin-left 0.5rem
+            flex-shrink 0
+            transition opacity 0.2s ease
+
+            &:hover
+              opacity 1
+
+            .tabulator-arrow
+              display block
+              width 0
+              height 0
+              border-left 4px solid transparent
+              border-right 4px solid transparent
+              border-bottom 4px solid $sgs-blanco
+              opacity 0.5
+
+              &.asc
+                border-bottom-color $sgs-blanco
+                opacity 1
+
+              &.desc
+                border-top 4px solid $sgs-blanco
+                border-bottom none
+                opacity 1
+
+        // Columnas congeladas
+        &.tabulator-frozen
+          position sticky
+          left 0
+          z-index 10
+          background: linear-gradient(135deg, $tabulator-primary 0%, $tabulator-primary-dark 100%)
+          box-shadow 2px 0 5px rgba(0, 0, 0, 0.1)
+
+        // Columna siendo redimensionada
+        &.tabulator-col-moving
+          background rgba($sgs-blanco, 0.2)
+          cursor move
+
+      // Grupo de columnas
+      .tabulator-col-group
+        .tabulator-col-group-titles
+          display flex
+
+          .tabulator-col-title
+            text-align center
+
+    // Filtros de columna (si se habilitan)
+    .tabulator-header-filter
+      padding 0.4rem 0.5rem
+      background rgba($sgs-blanco, 0.1)
+
+      input, select
+        width 100%
+        padding 0.4rem 0.6rem
+        background $sgs-blanco
+        border 1px solid rgba($sgs-secondary, 0.3)
+        border-radius 0.25rem
+        font-size 0.75rem
+        color $tabulator-text
+        font-family $tabulator-font-family
+        box-sizing border-box
+
+        &:focus
+          outline none
+          border-color $tabulator-primary
+          box-shadow 0 0 0 2px rgba($tabulator-primary, 0.15)
+
+  // =============================================================================
+  // TABLE HOLDER (scrollable area)
+  // =============================================================================
+
+  .tabulator-tableholder
+    flex 1
+    overflow auto
+    min-height 0
+    position relative
+
+    .tabulator-table
+      background-color $tabulator-bg
+      position relative
+      display block
+      width 100%
+
+      // Filas
+      .tabulator-row
+        border-bottom $tabulator-border-width solid $tabulator-border
+        transition all 0.15s ease
+        font-size $tabulator-font-size
+        display flex
+        min-height $tabulator-row-height
+
+        &:nth-child(even)
+          background-color rgba($tabulator-secondary-light, 0.4)
+
+        &:hover
+          background-color $tabulator-hover
+
+        &.tabulator-selected
+          background-color $tabulator-selected
+
+          &:hover
+            background-color rgba($tabulator-primary, 0.12)
+
+        // Celdas
+        .tabulator-cell
+          padding $tabulator-cell-padding
+          color $tabulator-text
+          border-right $tabulator-border-width solid rgba($tabulator-secondary, 0.08)
+          vertical-align middle
+          display inline-flex
+          align-items center
+          font-size 0.8rem
+          box-sizing border-box
+          overflow hidden
+          text-overflow ellipsis
+          white-space nowrap
+
+          &:last-child
+            border-right none
+
+          // Primera columna (fecha)
+          &:first-child
+            font-weight 500
+            color rgba($tabulator-text, 0.85)
+            font-size 0.75rem
+
+          // Celda siendo editada
+          &.tabulator-editing
+            border 2px solid $tabulator-primary
+            padding 0.4rem
+
+            input, select, textarea
+              width 100%
+              height 100%
+              border none
+              outline none
+              background transparent
+              font-family $tabulator-font-family
+              font-size $tabulator-font-size
+              color $tabulator-text
+
+          // Validación
+          &.tabulator-validation-fail
+            border 2px solid $sgs-rojo
+            background rgba($sgs-rojo, 0.05)
+
+        // Celdas congeladas
+        .tabulator-cell.tabulator-frozen
+          position sticky
+          left 0
+          z-index 10
+          background $tabulator-bg
+          box-shadow 2px 0 5px rgba(0, 0, 0, 0.05)
+
+        // Fila siendo movida
+        &.tabulator-row-moving
+          cursor move
+          opacity 0.7
+
+        // Fila expandible
+        &.tabulator-table
+          .tabulator-row
+            background rgba($tabulator-secondary-light, 0.3)
+
+    // Mensaje de no hay datos
+    .tabulator-no-rows
+      padding 2rem
+      text-align center
+      color $tabulator-text-light
+      font-size 1rem
+      font-weight 500
+
+    // Loader
+    .tabulator-loader
+      position absolute
+      display flex
+      align-items center
+      justify-content center
+      background rgba($tabulator-bg, 0.95)
+      width 100%
+      height 100%
+      z-index 100
+
+      .tabulator-loader-content
+        text-align center
+        color $tabulator-text
+        font-size 1rem
+        font-weight 600
+
+  // =============================================================================
+  // FOOTER / PAGINATION
+  // =============================================================================
+
+  .tabulator-footer
+    background: linear-gradient(135deg, $tabulator-secondary-light 0%, rgba($tabulator-secondary-light, 0.9) 100%)
+    border-top 2px solid rgba($tabulator-secondary, 0.25)
+    padding 0.75rem 1rem
+    flex-shrink 0
+    margin-top auto
+    display block
+
+    .tabulator-paginator
+      display flex
+      align-items center
+      justify-content space-between
+      gap 0.75rem
+      color $tabulator-text
+      flex-wrap wrap
+      font-size 0.8rem
+
+      // Selector de tamaño de página
+      .tabulator-page-size
+        background $tabulator-bg
+        border 2px solid rgba($tabulator-secondary, 0.3)
+        border-radius 0.375rem
+        padding 0.45rem 0.65rem
+        color $tabulator-text
+        font-size 0.8rem
+        font-weight 600
+        cursor pointer
+        transition all 0.2s ease
+        min-width 70px
+        font-family $tabulator-font-family
+
+        &:hover
+          border-color $tabulator-primary
+          background-color rgba($tabulator-primary, 0.05)
+
+        &:focus
+          outline none
+          border-color $tabulator-primary
+          box-shadow 0 0 0 3px rgba($tabulator-primary, 0.15)
+
+      // Etiqueta de filas
+      .tabulator-paginator-row-label
+        font-weight 600
+        color $tabulator-text
+        white-space nowrap
+        font-size 0.8rem
+
+      // Contenedor de botones
+      .tabulator-pages
+        display flex
+        gap 0.3rem
+
+        // Botones individuales
+        button
+          background $tabulator-bg
+          border 2px solid rgba($tabulator-secondary, 0.3)
+          border-radius 0.375rem
+          min-width 36px
+          height 36px
+          padding 0 0.4rem
+          color $tabulator-text
+          font-size 0.8rem
+          font-weight 600
+          cursor pointer
+          transition all 0.2s ease
+          display flex
+          align-items center
+          justify-content center
+          font-family $tabulator-font-family
+
+          &:hover:not(.active):not(:disabled)
+            background rgba($tabulator-primary, 0.12)
+            border-color $tabulator-primary
+            transform translateY(-1px)
+
+          &.active
+            background: linear-gradient(135deg, $tabulator-primary 0%, $tabulator-primary-dark 100%)
+            color $sgs-blanco
+            border-color $tabulator-primary
+            box-shadow 0 2px 6px rgba($tabulator-primary, 0.35)
+            font-weight 700
+
+          &:disabled
+            opacity 0.4
+            cursor not-allowed
+            transform none
+
+          // Flechas
+          &[data-page='first'],
+          &[data-page='prev'],
+          &[data-page='next'],
+          &[data-page='last']
+            font-weight 700
+            font-size 0.9rem
+
+  // =============================================================================
+  // SCROLLBARS PERSONALIZADOS
+  // =============================================================================
+
+  &::-webkit-scrollbar
+    width 10px
+    height 10px
+
+  &::-webkit-scrollbar-track
+    background rgba($tabulator-secondary, 0.08)
+    border-radius 5px
+
+  &::-webkit-scrollbar-thumb
+    background: linear-gradient(135deg, $tabulator-primary 0%, darken($tabulator-primary, 15%) 100%)
+    border-radius 5px
+    border 2px solid rgba($tabulator-secondary, 0.08)
+
+    &:hover
+      background: linear-gradient(135deg, darken($tabulator-primary, 5%) 0%, darken($tabulator-primary, 20%) 100%)
+
+  &::-webkit-scrollbar-corner
+    background rgba($tabulator-secondary, 0.08)
+
+  // =============================================================================
+  // ESTADO DE CARGA
+  // =============================================================================
+
+  &.tabulator-loading
+    .tabulator-loader
+      display flex
+
+  // =============================================================================
+  // RESPONSIVE
+  // =============================================================================
+
+  @media (max-width: 768px)
+    font-size 0.75rem
+
+    .tabulator-header
+      min-height 44px
+
+      .tabulator-col
+        font-size 0.65rem
+        padding 0.5rem 0.3rem
+
+        .tabulator-col-content
+          padding 0.5rem 0.3rem
+
+          .tabulator-col-title
+            font-size 0.6rem
+
+    .tabulator-tableholder
+      .tabulator-row
+        .tabulator-cell
+          padding 0.5rem 0.3rem
+          font-size 0.7rem
+
+    .tabulator-footer
+      padding 0.5rem
+
+      .tabulator-paginator
+        justify-content center
+        gap 0.5rem
+
+        .tabulator-pages
+          button
+            min-width 32px
+            height 32px
+            font-size 0.7rem
+
+        .tabulator-page-size
+          font-size 0.7rem
+          padding 0.35rem 0.5rem
+          min-width 60px
+
+// =============================================================================
+// CLASES DE UTILIDAD
+// =============================================================================
+
+// Texto centrado
+.tabulator-text-center
+  text-align center
+
+// Texto derecha
+.tabulator-text-right
+  text-align right
+
+// Negrita
+.tabulator-font-bold
+  font-weight 700
+
+// Color éxito
+.tabulator-text-success
+  color $tabulator-success
+
+// Color error
+.tabulator-text-error
+  color $sgs-rojo
+
+// Color primario
+.tabulator-text-primary
+  color $tabulator-primary
