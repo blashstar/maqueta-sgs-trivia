@@ -102,7 +102,7 @@ const inicializarTabla = () => {
   tabla.value = new Tabulator(tablaContainer.value, {
     data: registros.value,
     columns: columnas,
-    layout: 'fitColumns',
+    layout: 'fitDataFill',
     
     // Paginación mejorada
     pagination: 'local',
@@ -115,7 +115,11 @@ const inicializarTabla = () => {
     
     // Ordenamiento y movilidad
     headerSort: true,
-    movableColumns: true,
+    movableColumns: false,
+    
+    // Alineación y dimensiones
+    resizableColumns: true,
+    columnMinWidth: 80,
     
     // Traducción completa al español
     langs: {
@@ -159,7 +163,10 @@ const inicializarTabla = () => {
     
     // Asegurar que el footer esté al final
     height: '100%',
-    footerElement: '<div></div>'
+    
+    // Renderizado
+    renderHorizontal: 'virtual',
+    autoColumns: false
   });
   
   // Forzar recálculo de altura después de renderizar
