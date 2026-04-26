@@ -42,8 +42,7 @@ const tablaContainer = ref(null);
 const formatearFecha = (timestamp) => {
   const fecha = new Date(timestamp);
   // Formato peruano: DD/MM/YYYY HH:mm
-  // Agregar apóstrofe al inicio para forzar formato texto en Excel
-  const fechaFormateada = fecha.toLocaleDateString('es-PE', {
+  return fecha.toLocaleDateString('es-PE', {
     day: '2-digit',
     month: '2-digit',
     year: 'numeric',
@@ -51,16 +50,21 @@ const formatearFecha = (timestamp) => {
     minute: '2-digit',
     hour12: false
   });
-  return "'" + fechaFormateada;  // ← Apóstrofe fuerza formato texto
 };
 
 const columnas = [
   {
     title: 'Fecha',
     field: 'fecha',
-    formatter: (cell) => formatearFecha(cell.getValue()),
     width: 130,
-    headerSort: true
+    headerSort: true,
+    // Formatter para visualización en tabla
+    formatter: (cell) => formatearFecha(cell.getValue()),
+    // Accessor específico para exportación/download
+    accessorDownload: (value, data, type, params, column) => {
+      // Formatea la fecha como string para Excel
+      return formatearFecha(value);
+    }
   },
   {
     title: 'Nombre',
@@ -180,10 +184,12 @@ const inicializarTabla = () => {
 const exportarExcel = () => {
   if (!tabla.value) return;
   
-  // Exportar usando los datos formateados (con apóstrofe para Excel)
+  // Exportar usando accessorDownload para formatear la fecha
   tabla.value.download('xlsx', 'registros_sgs.xlsx', {
     sheetName: 'Registros',
-    fileName: `registros_sgs_${new Date().toISOString().split('T')[0]}`
+    fileName: `registros_sgs_${new Date().toISOString().split('T')[0]}`,
+    // Usar accessors para formatear datos durante exportación
+    accessor: true
   });
 };
 
